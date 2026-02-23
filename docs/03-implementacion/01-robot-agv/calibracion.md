@@ -1,7 +1,6 @@
 ---
 title: "Calibracion"
 nav_order: 4
-5
 parent: "Robot AGV"
 ---
 

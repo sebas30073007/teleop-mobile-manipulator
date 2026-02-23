@@ -1,7 +1,6 @@
 ---
 title: "Seguridad"
 nav_order: 6
-7
 parent: "Servidor"
 ---
 
