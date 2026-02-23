@@ -1,7 +1,6 @@
 ---
 title: "Controles"
 nav_order: 6
-7
 parent: "XR Meta Quest"
 ---
 
