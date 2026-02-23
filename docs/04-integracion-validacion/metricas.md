@@ -1,7 +1,7 @@
 ---
 title: "Métricas"
 nav_order: 2
-parent: "Integración y validación"
+parent: "Validación y pruebas"
 ---
 
 ## Métricas técnicas

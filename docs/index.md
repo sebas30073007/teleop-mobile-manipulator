@@ -1,6 +1,7 @@
 ---
 title: "Inicio"
 nav_order: 1
+nav_exclude: true
 ---
 
 # Teleoperación móvil-manipulador para logística inclusiva
