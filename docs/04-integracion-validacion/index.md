@@ -1,5 +1,5 @@
 ---
-title: "Integración y validación"
+title: "Validación y pruebas"
 nav_order: 4
 has_children: true
 permalink: /integracion-validacion/

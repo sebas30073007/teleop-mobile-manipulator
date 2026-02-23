@@ -1,7 +1,7 @@
 ---
 title: "Resultados"
 nav_order: 3
-parent: "Integración y validación"
+parent: "Validación y pruebas"
 ---
 
 ## Tabla de resultados

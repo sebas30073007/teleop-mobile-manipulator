@@ -1,7 +1,7 @@
 ---
 title: "Plan de experimentos"
 nav_order: 1
-parent: "Integración y validación"
+parent: "Validación y pruebas"
 ---
 
 ## Diseño experimental base
