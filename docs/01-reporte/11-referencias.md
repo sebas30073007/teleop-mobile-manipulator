@@ -4,16 +4,24 @@ nav_order: 11
 parent: "Reporte"
 ---
 
-## Referencias (formato IEEE)
+# Referencias
 
-[1] UNCTAD, "COVID-19 and E-commerce: A Global Review," United Nations, Geneva, 2021. [Online]. Available: https://unctad.org/publication/covid-19-and-e-commerce-global-review
+Las siguientes referencias, en formato IEEE, sustentan el marco contextual, la problemática y las decisiones metodológicas documentadas en este reporte.
 
-[2] AMVO, "Estudio de Venta Online 2024," Asociación Mexicana de Venta Online, Ciudad de México, 2024. [Online]. Available: https://www.amvo.org.mx/estudios/
+---
 
-[3] M. Wurman, R. D’Andrea and M. Mountz, "Coordinating hundreds of cooperative, autonomous vehicles in warehouses," *AI Magazine*, vol. 29, no. 1, pp. 9-20, 2008.
+[1] A. Lipsman, "Global E-Commerce 2019," *EMARKETER*, Jun. 27, 2019. [En línea]. Disponible: https://www.emarketer.com/content/global-ecommerce-2019
 
-[4] International Labour Organization, "Disability inclusion in the world of work," ILO, Geneva, 2022. [Online]. Available: https://www.ilo.org/
+[2] Insider Intelligence, "Global Ecommerce Forecast 2023–2027," *Insider Intelligence*, 2023. [En línea]. Disponible: https://www.insiderintelligence.com/insights/global-ecommerce-forecast/
 
-[5] ISO 9241-11:2018, "Ergonomics of human-system interaction — Part 11: Usability: Definitions and concepts," International Organization for Standardization, 2018.
+[3] Mecalux, "Omni-Channel Strategie: Wie kann das Lager an die Anforderungen des e-commerce angepasst werden?," *Mecalux.de*, 17 dic. 2018. [En línea]. Disponible: https://www.mecalux.de/blog/omnichannel-strategie-anpassen-lager-online
 
-[6] J. Casper and R. R. Murphy, "Human-robot interactions during the robot-assisted urban search and rescue response at the World Trade Center," *IEEE Transactions on Systems, Man, and Cybernetics Part B*, vol. 33, no. 3, pp. 367-385, 2003.
+[4] LogisticsIQ, "Warehouse Automation Market by Technology (AGV/AMR, AS/RS, Conveyors, Sortation Systems), Industry (E-commerce, Automotive, F&B) and Geography — Global Forecast to 2026," *LogisticsIQ Market Research Report*, 2019. [En línea]. Disponible: https://www.thelogisticsiq.com/research/warehouse-automation-market/
+
+[5] AMVO, "Reporte de Resultados Hot Sale 2025," Asociación Mexicana de Venta Online, 2025. [En línea]. Disponible: https://blog.amvo.org.mx/publicaciones/reporte-de-resultados-hot-sale-2025
+
+[6] I. Molina, "Inteligencia artificial y robots industriales: así se transforma la manufactura en México," *Mexico Industry*, nov. 2025. [En línea]. Disponible: https://mexicoindustry.com/noticia/inteligencia-artificial-y-robots-industriales-asi-se-transforma-la-manufactura-en-mexico
+
+[7] INEGI, "Resultados oportunos de los Censos Económicos 2024," Instituto Nacional de Estadística y Geografía, Comunicado de prensa núm. 405/24, jul. 2024.
+
+[8] INEGI, "Censos Económicos 2024: Resumen de resultados," México, 2024. [En línea]. Disponible: https://www.inegi.org.mx/programas/ce/2024/

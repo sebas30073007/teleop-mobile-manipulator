@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find \"E:/20_UNI/Html proyects/Claude_JustTheDocs_ProyectoTerminal/teleop-mobile-manipulator/assets/raw_assets/CADs manipulador\" -type f -exec ls -lh {})",
+      "Bash(cd:*)",
+      "Bash(cp \"plataforma_movil_uniciclo_base.jpg\" \"../img/agv_plataforma_base.jpg\")",
+      "Bash(cp \"Test en piso del robot movil.jpg\" \"../img/agv_prueba_piso.jpg\")",
+      "Bash(cp \"material_drivers.jpg\" \"../img/agv_drivers_materiales.jpg\")",
+      "Bash(cp \"Conexiones_driver.jpg\" \"../img/agv_conexiones_driver.jpg\")",
+      "Bash(cp \"Ensamble_de_manipulador.jpg\" \"../img/manipulador_ensamble.jpg\")",
+      "Bash(cp \"datasheet_Puente_H___ESP32C3 \\(1\\).pdf\" \"../downloads/datasheet_puente_h_esp32c3.pdf\")",
+      "Bash(cp \"Puente_H.zip\" \"../downloads/puente_h_kicad.zip\")",
+      "Bash(touch \"../models/.gitkeep\")",
+      "Bash(bundle exec:*)",
+      "Bash(python3 -c \":*)",
+      "Bash(python -c \":*)",
+      "Bash(where py:*)",
+      "Bash(py --version)",
+      "Bash(py -c \":*)",
+      "Bash(py -m pip install pymupdf -q)",
+      "Bash(py:*)",
+      "Bash(xxd \"E:/20_UNI/Html proyects/Claude_JustTheDocs_ProyectoTerminal/teleop-mobile-manipulator/assets/raw_assets/UI_contexto.txt\")"
+    ]
+  }
+}

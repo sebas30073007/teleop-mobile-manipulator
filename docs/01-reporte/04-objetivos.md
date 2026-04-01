@@ -4,16 +4,33 @@ nav_order: 4
 parent: "Reporte"
 ---
 
+# Objetivos
+
 ## Objetivo general
-Diseñar y validar una plataforma de teleoperación para logística de e-commerce basada en robot móvil-manipulador y visualización XR.
+
+Diseñar, integrar y validar experimentalmente una plataforma de teleoperación robótica orientada a tareas logísticas, compuesta por un robot móvil-manipulador, un servidor de coordinación basado en ROS2 y una interfaz de operación en realidad extendida (XR) sobre Meta Quest, evaluando su desempeño técnico y usabilidad en escenarios controlados de almacén simulado.
 
 ## Objetivos específicos
-1. Caracterizar tareas logísticas candidatas para teleoperación.
-2. Definir requerimientos funcionales y de usabilidad del sistema.
-3. Integrar robot, servidor y capa XR en una arquitectura operable.
-4. Evaluar desempeño técnico y experiencia de uso en pruebas controladas.
 
-## Cómo se medirá
-- **Tiempo de ejecución:** duración por tarea y por flujo completo.
-- **Tasa de error:** eventos de falla operativa o desviación de procedimiento.
-- **Usabilidad:** percepción de facilidad de uso y carga operativa.
+**OE1 — Análisis de tareas:** Identificar y caracterizar las tareas logísticas con mayor potencial de teleoperación en función de su complejidad de ejecución, riesgo operativo y beneficio marginal de automatización, definiendo el caso de uso primario del prototipo.
+
+**OE2 — Requerimientos de sistema:** Definir los requerimientos funcionales, no funcionales y de interfaz del sistema, incluyendo latencia máxima aceptable, precisión de manipulación, resolución y frecuencia del video de retroalimentación, y criterios mínimos de usabilidad.
+
+**OE3 — Integración técnica:** Construir e integrar los tres subsistemas —plataforma robótica, servidor middleware y capa XR— garantizando comunicación en tiempo real, control de movimiento confiable y retroalimentación visual al operador durante la teleoperación.
+
+**OE4 — Validación experimental:** Ejecutar un protocolo de pruebas estructurado que permita comparar el desempeño del sistema teleoperado contra una línea base de referencia, cuantificando tiempo de ejecución por tarea, tasa de error operativo y usabilidad percibida mediante métricas estandarizadas.
+
+## Métricas de evaluación
+
+| Métrica | Instrumento de medición | Umbral de referencia |
+|---|---|---|
+| Tiempo de ejecución por tarea | Cronometraje por sesión de prueba | Comparable a ejecución manual (±20%) |
+| Tasa de error operativo | Registro de eventos de falla o desviación | < 15% de intentos |
+| Latencia de control extremo a extremo | Medición en red local (ms) | < 100 ms |
+| Usabilidad percibida | Cuestionario SUS (escala 0–100) | Puntaje ≥ 68 (rango aceptable) |
+
+Las métricas fueron seleccionadas por su relevancia operativa directa y por disponer de instrumentos de medición validados en la literatura de teleoperación y usabilidad. El umbral del SUS (≥ 68) corresponde al punto de corte empírico establecido por Bangor et al. para clasificar un sistema como aceptable para uso general.
+
+---
+
+*Siguiente: [Justificación →]({{ "/docs/01-reporte/05-justificacion" | relative_url }})*

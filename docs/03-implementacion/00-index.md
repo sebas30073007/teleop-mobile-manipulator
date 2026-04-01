@@ -12,27 +12,36 @@ permalink: /implementacion/
 ### Visión general
 El sistema integra un robot móvil-manipulador, un servidor de coordinación y una interfaz XR para teleoperación. La arquitectura prioriza desacoplamiento por módulos y observabilidad de estado.
 
-![Arquitectura del sistema]({{ "/assets/img/full-arquitectura-sistema.png" | relative_url }})
+```
+┌──────────────────┐      ┌─────────────────────┐      ┌───────────────────┐
+│  Robot AGV       │◄────►│  Servidor / Mid.     │◄────►│  XR Meta Quest    │
+│                  │      │                     │      │                   │
+│ • Plataforma     │      │ • ROS bus de mens.  │      │ • Unity + OpenXR  │
+│   diferencial    │      │ • SLAM 2D           │      │ • Gemelo digital  │
+│ • Manipulador    │      │ • Percepción RGB-D  │      │ • Stream video    │
+│   2-DOF          │      │ • Telemetría        │      │ • Controles XR    │
+│ • PCB Puente H   │      │ • Seguridad básica  │      │ • UI accesible    │
+└──────────────────┘      └─────────────────────┘      └───────────────────┘
+```
 
 ### Flujos de datos
-- Telemetría del robot hacia servidor.
-- Comandos de control desde XR al servidor y de servidor al robot.
-- Datos de percepción para asistencia de operación y registro.
 
-### Comunicación
-- Mensajería de control en red local.
-- Sincronización de estado para interfaz XR.
-- Registro de eventos para análisis posterior.
+| Canal | Origen → Destino | Contenido |
+|---|---|---|
+| Telemetría | Robot → Servidor → XR | Pose, velocidad, estado, alertas |
+| Comandos | XR → Servidor → Robot | `cmd_vel`, comandos manipulador |
+| Percepción | Robot → Servidor → XR | Scan LiDAR, imagen RGB-D, mapa |
+| Sincronización | Bidireccional | Estado del sistema, modo activo |
 
-### Seguridad
-- Segmentación básica de red para componentes críticos.
-- Control de acceso por sesión de operación.
-- Registro de trazas para auditoría técnica.
+### Estado de integración
 
-### Roadmap
-1. Integración base de comunicaciones.
-2. Estabilización de operación teleasistida.
-3. Validación de desempeño y usabilidad.
+| Módulo | Estado |
+|---|---|
+| Robot AGV — hardware | ✅ Construido y validado |
+| Robot AGV — software (ROS) | 🔄 En integración |
+| Servidor middleware | 🔄 En integración |
+| XR Meta Quest | 🔄 En integración |
+| Sistema completo end-to-end | ⏳ Pendiente |
 
 ## Módulos
 - [Robot AGV + manipulador]({{ "/docs/03-implementacion/01-robot-agv/" | relative_url }})
