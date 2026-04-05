@@ -8,12 +8,5 @@ nav_order: 1
 ## Resumen del proyecto
 Este proyecto plantea una plataforma de **teleoperación con robótica móvil y manipulación asistida con XR** para tareas logísticas en entornos de e-commerce. El enfoque está orientado a habilitar operación remota en procesos de almacén y última milla, con especial interés en accesibilidad e inclusión laboral.
 
-## Cómo navegar
-- [Reporte del proyecto]({{ "/reporte/" | relative_url }})
-- [Implementación técnica]({{ "/implementacion/" | relative_url }})
-- [Validación y pruebas]({{ "/integracion-validacion/" | relative_url }})
 
-## Estado actual
-- Estructura documental inicial habilitada.
-- Contenido base consolidado desde la presentación de proyecto.
-- Pendiente: completar evidencias experimentales y resultados finales.
+(Proximamente video resumen de todo el proyecto)

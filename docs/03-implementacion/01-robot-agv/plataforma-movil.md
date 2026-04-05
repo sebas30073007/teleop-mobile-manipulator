@@ -8,13 +8,13 @@ parent: "Robot AGV"
 
 La base del robot es una **plataforma diferencial de tipo uniciclo rehabilitada**. Se conservó la estructura mecánica original y se sustituyeron los drivers de motor, cableado y electrónica de control para integrarlos con el sistema de teleoperación.
 
-## Hardware de la base
+## Hardware base
 
 ![Plataforma móvil base]({{ "/assets/img/agv_plataforma_base.jpg" | relative_url }})
 
 La plataforma cuenta con:
 
-- **2 motores DC** con encoders de cuadratura para odometría diferencial
+- **2 motores DC** con encoders
 - **4 ruedas locas** (una en cada extremo) para soporte y estabilidad
 - **Estructura de acero calibre 18 (1.2 mm)** que soporta el manipulador y la electrónica
 
@@ -33,17 +33,6 @@ Se usan dos módulos Puente H. El **módulo maestro** recibe los comandos desde 
 | Motor derecho | Puente H #1 — Maestro | I²C Maestro (`SW: 100`) |
 | Motor izquierdo | Puente H #2 — Esclavo | I²C Slave 1 (`SW: 101`) |
 
-## Prueba en piso
+## Re-habilitación
 
 ![Prueba en piso]({{ "/assets/img/agv_prueba_piso.jpg" | relative_url }})
-
-<!-- Video de prueba en piso — reemplazar YOUTUBE_ID con el ID del video -->
-<!-- {% include video_youtube.html id="YOUTUBE_ID" title="Prueba en piso robot móvil + PCB Puente H" %} -->
-
-## Estado actual
-
-- [x] Rehabilitación mecánica completada
-- [x] Drivers Puente H integrados y validados
-- [x] Prueba de movimiento en piso con PCB final
-- [ ] Integración con odometría ROS
-- [ ] Calibración de velocidades angulares

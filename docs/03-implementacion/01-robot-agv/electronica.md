@@ -19,7 +19,7 @@ Tarjeta de control de motor DC de **diseño propio**, basada en topología de pu
 |---|---|
 | Alimentación de potencia | 12 V a 24 V DC nominal |
 | Corriente continua recomendada | 4 A a 5 A |
-| Corriente intermitente máx. | hasta 8 A (pendiente validación térmica) |
+| Corriente intermitente máx. | hasta 8 A |
 | Microcontrolador | ESP32-C3 SuperMini |
 | Aislamiento lógica/potencia | Optoacopladores 4N25 |
 | MOSFETs alto lado | IRF9540N (canal P, 117 mΩ) |
@@ -38,12 +38,10 @@ Tarjeta de control de motor DC de **diseño propio**, basada en topología de pu
 - Arranque seguro en estado `DISARMED`: la salida al motor permanece deshabilitada hasta habilitación explícita
 
 ## Imágenes de la PCB
-
+### Esquema del peunte H
 ![Esquema del puente H]({{ "/assets/img/puente_h_esquema.jpg" | relative_url }})
-
+### Vista superior PCB ensamblada
 ![PCB recién soldada]({{ "/assets/img/puente_h_pcb_soldada.jpg" | relative_url }})
-
-![Vista final de la PCB]({{ "/assets/img/puente_h_pcb_final.jpg" | relative_url }})
 
 ## Bloques funcionales
 
@@ -117,25 +115,13 @@ El estado `IN_0 = 1` y `IN_1 = 1` simultáneamente está **prohibido**: provoca 
 
 ## Estimación de capacidad eléctrica
 
-| Corriente | Caída en puente | Pérdida total | Comentario |
-|---|---|---|---|
-| 3 A | 0.48 V | 1.45 W | Operación cómoda para validaciones |
-| 5 A | 0.81 V | 4.03 W | Continuo preliminar recomendado |
-| 6 A | 0.97 V | 5.80 W | Requiere buena evacuación térmica |
-| 8 A | 1.29 V | 10.30 W | Solo intermitente hasta validar temperatura |
+| Corriente | Caída en puente | Pérdida total |
+|---|---|---|
+| 3 A | 0.48 V | 1.45 W |
+| 5 A | 0.81 V | 4.03 W |
+| 6 A | 0.97 V | 5.80 W |
+| 8 A | 1.29 V | 10.30 W |
 
-## Prueba de prototipo
-
-![Prototipo armado]({{ "/assets/img/puente_h_prototipo_armado.jpg" | relative_url }})
-
-![Test del prototipo]({{ "/assets/img/puente_h_prototipo_test.jpg" | relative_url }})
-
-![Temperatura en prototipo]({{ "/assets/img/puente_h_temperatura.jpg" | relative_url }})
-
-<!-- Video salida osciloscopio prototipo — reemplazar YOUTUBE_ID -->
-<!-- {% include video_youtube.html id="YOUTUBE_ID" title="Osciloscopio — salida Puente H prototipo" %} -->
-
-{% include video_youtube.html id="PR21DzIkdKw" title="Pruebas PWM del Puente H — PCB final" %}
 
 ## Comandos de control (firmware)
 

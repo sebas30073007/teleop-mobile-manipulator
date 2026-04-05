@@ -6,7 +6,19 @@ parent: "Robot AGV"
 
 # Pruebas del Robot AGV
 
-## Pruebas realizadas
+## Prueba de Puente H
+
+### Ensamble en protoboard 
+El puente H se armo primero en protoboard para verificar el funcionamiento primario y capacidad de los componentes. En este caso los más criticos son los mosfets en la etapa de potencia, se midio la temperatura llegnado a registrar hasta 61°C.
+
+![Prototipo armado]({{ "/assets/img/puente_h_prototipo_armado.jpg" | relative_url }})
+![Test del prototipo]({{ "/assets/img/puente_h_prototipo_test.jpg" | relative_url }})
+![Temperatura en prototipo]({{ "/assets/img/puente_h_temperatura.jpg" | relative_url }})
+### Video pruebas
+El siguiente video muestra la vista de la salida del puente H desde un osciloscopio. Probando tanto el circuito en protoboard como la PCB.
+{% include video_youtube.html id="PR21DzIkdKw" title="Pruebas PWM del Puente H — PCB final" %}
+
+## Pruebas Manipulador
 
 ### Prueba estática del manipulador
 
@@ -17,40 +29,31 @@ Validación de rangos de movimiento y torque de cada articulación con el robot 
 **Resultados:**
 - Articulaciones 1 y 2 alcanzan el rango de movimiento de diseño
 - No se detectó juego excesivo en las transmisiones HTD3M
-- El gripper rack-and-pinion opera correctamente en apertura/cierre
 
 ---
 
-### Prueba de movimiento rápido — manipulador (Arduino)
+### Prueba de movimiento rápido
 
-Prueba preliminar de velocidad de movimiento del manipulador controlado directamente desde Arduino, antes de integración ROS.
-
-<!-- {% include video_youtube.html id="YOUTUBE_ID" title="Movimiento manipulador — prueba rápida Arduino" %} -->
+Prueba preliminar de velocidad de movimiento del manipulador...
 
 ---
 
-### Prueba en piso — robot móvil + PCB Puente H
+## Prueba robot móvil
 
-Validación de la plataforma móvil con los módulos Puente H de diseño propio (PCB final).
+### Pruebas
+
+Validación de la plataforma móvil con los módulos Puente H de diseño propio. El siguiente video muestra pruebas escalonadas.
 
 {% include video_youtube.html id="_QijcA0hDec" title="Pruebas de la plataforma robótica — Proyecto Terminal 2026" %}
 
 **Resultados:**
 - Movimiento diferencial estable en superficie plana
-- Módulos Puente H responden correctamente a comandos de dirección y velocidad
-- Temperatura de MOSFETs dentro del rango aceptable en prueba prolongada
+- Módulos Puente H responden correctamente a comandos de dirección
+- Temperatura de MOSFETs dentro del rango aceptable (no se percibe calor excesivo al tacto)
 
 ---
 
-### Prueba en piso — robot móvil + manipulador
-
-Prueba del sistema integrado (plataforma + manipulador) en movimiento sobre piso.
-
-<!-- {% include video_youtube.html id="YOUTUBE_ID" title="Robot móvil + manipulador en piso" %} -->
-
----
-
-### Prueba de robustez prolongada — Puente H (1 hora)
+### Prueba de robustez prolongada
 
 Prueba térmica del módulo Puente H bajo carga continua durante 60 minutos.
 
@@ -73,9 +76,3 @@ Prueba térmica del módulo Puente H bajo carga continua durante 60 minutos.
 | Sistema integrado en piso | ✅ Aprobada | Operación conjunta validada |
 | Robustez Puente H 1 hora | ✅ Aprobada | Sin fallas térmicas |
 | Pick-and-place con carga | ⏳ Pendiente | Requiere integración ROS completa |
-
-## Pendientes
-
-- [ ] Prueba de pick-and-place con objetos reales
-- [ ] Validación de odometría vs. ground truth
-- [ ] Prueba de navegación autónoma en zona estructurada
