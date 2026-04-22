@@ -20,7 +20,7 @@ El reporte puede leerse de forma lineal, de contexto a referencias, o consultars
   width="130%"
   height="600px">
   <p>Your browser can’t display PDFs.
-     <a href="/assets/pdfs/example.pdf">Download the PDF</a>.
+     <a href="/assets/pdfs/Proyecto_Terminal.pdf">Download the PDF</a>.
   </p>
 </object>
 
