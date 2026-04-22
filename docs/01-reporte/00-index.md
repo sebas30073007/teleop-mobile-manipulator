@@ -14,8 +14,8 @@ El reporte puede leerse de forma lineal, de contexto a referencias, o consultars
 ## Presentacion Tesis
 
 <iframe
-  src="/assets/pdfs/Proyecto Terminal.pdf"
-  width="150%"
+  src="/assets/pdfs/Proyecto_Terminal.pdf"
+  width="130%"
   height="700"
   style="border: 1px solid #e5e7eb;"
 >
