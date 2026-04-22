@@ -15,12 +15,12 @@ El reporte puede leerse de forma lineal, de contexto a referencias, o consultars
 
 
 <object
-  data="/assets/pdfs/Proyecto_Terminal.pdf"
+  data="/assets/pdf/Proyecto_Terminal.pdf"
   type="application/pdf"
   width="130%"
   height="600px">
   <p>Your browser can’t display PDFs.
-     <a href="/assets/pdfs/Proyecto_Terminal.pdf">Download the PDF</a>.
+     <a href="/assets/pdf/Proyecto_Terminal.pdf">Download the PDF</a>.
   </p>
 </object>
 
