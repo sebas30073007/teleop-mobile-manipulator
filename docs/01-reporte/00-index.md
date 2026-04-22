@@ -15,7 +15,7 @@ El reporte puede leerse de forma lineal, de contexto a referencias, o consultars
 
 <iframe
   src="/assets/pdfs/Proyecto Terminal.pdf"
-  width="100%"
+  width="300%"
   height="700"
   style="border: 1px solid #e5e7eb;"
 >
