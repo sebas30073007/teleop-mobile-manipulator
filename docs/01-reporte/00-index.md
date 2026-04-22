@@ -11,6 +11,16 @@ Este reporte documenta el proceso de investigación, diseño y validación del s
 
 El reporte puede leerse de forma lineal, de contexto a referencias, o consultarse por sección según el área de interés. Cada capítulo está redactado para ser autosuficiente; sin embargo, las referencias cruzadas entre secciones permiten comprender con mayor profundidad las decisiones de diseño y sus motivaciones.
 
+## Presentacion Tesis
+
+<iframe
+  src="/assets/pdfs/Proyecto Terminal.pdf"
+  width="100%"
+  height="600px"
+  style="border: none;">
+</iframe>
+
+
 ## Capítulos
 
 1. [Contexto]({{ "/docs/01-reporte/01-contexto" | relative_url }}) — el crecimiento del e-commerce y la presión logística que da origen al proyecto
