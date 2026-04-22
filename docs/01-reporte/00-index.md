@@ -13,13 +13,17 @@ El reporte puede leerse de forma lineal, de contexto a referencias, o consultars
 
 ## Presentacion Tesis
 
-<iframe
-  src="/assets/pdfs/Proyecto_Terminal.pdf"
+
+<object
+  data="/assets/pdfs/Proyecto_Terminal.pdf"
+  type="application/pdf"
   width="130%"
-  height="700"
-  style="border: 1px solid #e5e7eb;"
->
-</iframe>
+  height="600px">
+  <p>Your browser can’t display PDFs.
+     <a href="/assets/pdfs/example.pdf">Download the PDF</a>.
+  </p>
+</object>
+
 
 
 ## Capítulos
