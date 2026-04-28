@@ -8,7 +8,7 @@ parent: "XR Meta Quest"
 
 ## Proyecto Unity
 
-El proyecto está configurado para compilación en **Meta Quest 3** (Android ARM64) usando el **Meta XR SDK** con perfil OpenXR. La escena corre en modo **passthrough MR**: el canvas de UI flota en world-space sobre el entorno real del operador.
+El proyecto está configurado para compilación en **Meta Quest 3** (Android ARM64) usando **Meta XR SDK 83.0** con perfil OpenXR. La escena corre en modo **passthrough MR**: el canvas de UI flota en world-space sobre el entorno real del operador.
 
 ### Paquetes Unity principales
 

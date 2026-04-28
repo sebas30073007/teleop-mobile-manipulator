@@ -75,4 +75,4 @@ Prueba térmica del módulo Puente H bajo carga continua durante 60 minutos.
 | Plataforma móvil + PCB Puente H | ✅ Aprobada | Movimiento diferencial estable |
 | Sistema integrado en piso | ✅ Aprobada | Operación conjunta validada |
 | Robustez Puente H 1 hora | ✅ Aprobada | Sin fallas térmicas |
-| Pick-and-place con carga | ⏳ Pendiente | Requiere integración ROS completa |
+| Pick-and-place con carga | ⏳ Pendiente | Requiere integración completa NUC ↔ ESP32-C3 ↔ XR |

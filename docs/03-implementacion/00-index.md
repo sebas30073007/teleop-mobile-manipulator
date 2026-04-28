@@ -15,7 +15,7 @@ El sistema integra un robot móvil-manipulador, un servidor de coordinación y u
 ┌──────────────────┐      ┌─────────────────────┐      ┌───────────────────┐
 │  Robot AGV       │◄────►│  Servidor / Mid.     │◄────►│  XR Meta Quest    │
 │                  │      │                     │      │                   │
-│ • Plataforma     │      │ • ROS bus de mens.  │      │ • Unity + OpenXR  │
+│ • Plataforma     │      │ • Middleware ZMQ    │      │ • Unity + OpenXR  │
 │   diferencial    │      │ • SLAM 2D           │      │ • Gemelo digital  │
 │ • Manipulador    │      │ • Percepción RGB-D  │      │ • Stream video    │
 │   2-DOF          │      │ • Telemetría        │      │ • Controles XR    │

@@ -12,7 +12,7 @@ El sistema desarrollado cubre la integración completa de tres subsistemas en un
 
 **Plataforma robótica:** Un robot móvil con base de tracción diferencial — dos motores paso a paso NEMA23 con drivers de lazo cerrado CL57T — y un brazo manipulador de dos grados de libertad (articulaciones de hombro y codo), capaz de navegar en superficies planas interiores y realizar operaciones de pick-and-place con objetos de geometría simple y peso moderado.
 
-**Servidor de coordinación:** Un nodo central basado en ROS2 que gestiona la comunicación bidireccional entre la plataforma robótica y la interfaz XR, procesa el stream de cámara para retroalimentación visual al operador, y ejecuta los comandos de movimiento en tiempo real sobre red local (WiFi/LAN).
+**Servidor de coordinación:** Un servicio central basado en Python y ZeroMQ (ZMQ) que gestiona la comunicación bidireccional entre la plataforma robótica y la interfaz XR, procesa el stream de cámara para retroalimentación visual al operador, y ejecuta los comandos de movimiento en tiempo real sobre red local (WiFi/LAN).
 
 **Interfaz XR:** Una aplicación desarrollada en Unity para Meta Quest que permite al operador visualizar el entorno del robot en primera persona, emitir comandos de movimiento y manipulación mediante los controladores del headset, y recibir retroalimentación de estado del sistema en tiempo real.
 
