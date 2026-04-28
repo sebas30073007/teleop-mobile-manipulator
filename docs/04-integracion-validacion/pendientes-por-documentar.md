@@ -10,12 +10,13 @@ Esta sección concentra lo que aún falta para convertir el repositorio en un ma
 
 ## Información ya confirmada
 
+
 - Arquitectura de comunicación: **ZeroMQ (ZMQ)**.
 - Firmware de ESP32-C3: **MicroPython**.
 - Backend NUC: **Python 3.12**.
 - XR: **Meta XR SDK 83.0**.
 - Sistema operativo del entorno principal: **pendiente de especificar en la documentación final**.
-- Prioridad documental: **réplica académica**.
+
 
 ## Información faltante y necesaria para redactar el manual final
 

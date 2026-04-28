@@ -22,7 +22,11 @@ Cada módulo Puente H corre firmware en **MicroPython** que implementa:
 ## Stack NUC (Python 3.12 + ZMQ)
 
 {: .note }
+
 La coordinación actual entre NUC, sensores, interfaz XR y control del robot se implementa con Python 3.12 y ZeroMQ.
+
+El proyecto no usa ROS. La coordinación actual entre NUC, sensores, interfaz XR y control del robot se implementa con Python 3.12 y ZeroMQ.
+
 
 ### Componentes principales previstos
 
