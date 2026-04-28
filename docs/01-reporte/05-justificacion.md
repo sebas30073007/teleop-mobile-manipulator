@@ -22,9 +22,9 @@ El teletrabajo operativo — donde un operador remoto controla un robot que act�
 
 ## Eje técnico: madurez tecnológica y viabilidad del prototipo
 
-La convergencia de tres tecnologías con curvas de madurez favorables — robótica móvil, middleware de tiempo real (ROS2) y realidad extendida (XR) — hace viable la construcción de un prototipo funcional dentro del marco de un proyecto terminal universitario. Los costos de los componentes clave han bajado considerablemente en la última década: microcontroladores WiFi de alto rendimiento (ESP32), motores paso a paso con drivers de lazo cerrado (CL57T), y headsets XR de consumo (Meta Quest) hoy ofrecen capacidades que hace cinco años solo estaban disponibles en equipos industriales de costo prohibitivo [6].
+La convergencia de tres tecnologías con curvas de madurez favorables — robótica móvil, middleware de comunicación en tiempo real (Python + ZeroMQ) y realidad extendida (XR) — hace viable la construcción de un prototipo funcional dentro del marco de un proyecto terminal universitario. Los costos de los componentes clave han bajado considerablemente en la última década: microcontroladores WiFi de alto rendimiento (ESP32), motores paso a paso con drivers de lazo cerrado (CL57T), y headsets XR de consumo (Meta Quest) hoy ofrecen capacidades que hace cinco años solo estaban disponibles en equipos industriales de costo prohibitivo [6].
 
-El ecosistema de software abierto complementa esta accesibilidad de hardware: ROS2, Unity, el SDK de Meta XR y las bibliotecas de visión por computadora de código abierto permiten implementaciones robustas sin licencias propietarias. Esto hace que el prototipo desarrollado sea, por diseño, reproducible y extensible — condición indispensable para que un proyecto de investigación académica genere valor más allá de su contexto de desarrollo inmediato.
+El ecosistema de software abierto complementa esta accesibilidad de hardware: MicroPython para ESP32-C3, Python 3.12 en la NUC, Unity, el SDK de Meta XR y las bibliotecas de visión por computadora de código abierto permiten implementaciones robustas sin licencias propietarias. Esto hace que el prototipo desarrollado sea, por diseño, reproducible y extensible — condición indispensable para que un proyecto de investigación académica genere valor más allá de su contexto de desarrollo inmediato.
 
 ---
 

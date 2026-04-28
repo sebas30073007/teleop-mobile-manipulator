@@ -7,7 +7,7 @@ has_children: true
 
 # NUC — Nodo Maestro de Percepción
 
-La **NUC (Intel NUC)** es el computador embarcado del robot. No existe un servidor externo separado: la NUC viaja a bordo del robot y actúa como nodo maestro de percepción, procesamiento y coordinación.
+La **NUC (Intel NUC)** es el computador embarcado del robot. No existe un servidor externo separado: la NUC viaja a bordo del robot y actúa como nodo maestro de percepción, procesamiento y coordinación, ejecutando backend en **Python 3.12**.
 
 ## Responsabilidades principales
 

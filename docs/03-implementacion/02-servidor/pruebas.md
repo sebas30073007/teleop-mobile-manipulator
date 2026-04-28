@@ -8,17 +8,17 @@ parent: "Servidor"
 
 ## Pruebas realizadas
 
-### Verificación de topics ROS
+### Verificación de canales de datos
 
-Validación de que los topics definidos en la arquitectura publican datos correctamente a la frecuencia esperada.
+Validación de que los canales definidos en la arquitectura publican datos correctamente a la frecuencia esperada.
 
-| Topic | Frecuencia esperada | Estado |
+| Canal | Frecuencia esperada | Estado |
 |---|---|---|
-| `/scan` (RPLiDAR) | ~10 Hz | ✅ Verificado |
-| `/camera/color/image` | 30 fps | ✅ Verificado |
-| `/camera/depth/image` | 30 fps | ✅ Verificado |
-| `/odom` | 10-20 Hz | ⏳ Pendiente integración encoder |
-| `/cmd_vel` → motor | — | ✅ Verificado (parcial) |
+| `lidar_grid` (RPLiDAR C1) | ~10-12 Hz | ✅ Verificado |
+| `video_rgb` (RealSense) | ~30 fps | ✅ Verificado |
+| `stat` | ~2 Hz | ✅ Verificado |
+| Telemetría de encoders | 10-20 Hz | ⏳ Pendiente integración |
+| `cmd` (5002) → motor | — | ✅ Verificado (parcial) |
 
 ### Comunicación WiFi robot ↔ SBC
 

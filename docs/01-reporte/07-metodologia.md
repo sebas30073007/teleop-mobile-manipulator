@@ -20,7 +20,7 @@ El proyecto sigue una metodología de diseño de ingeniería en cuatro fases sec
 
 **Objetivo:** Traducir el problema caracterizado en una especificación de sistema diseñable y evaluable.
 
-**Proceso:** Levantamiento de requerimientos funcionales (qué debe hacer el sistema) y no funcionales (latencia, precisión, accesibilidad, costo). Evaluación y selección de tecnologías: ROS2 como middleware de coordinación, ESP32-C3 como controlador embebido de la plataforma robótica, motores paso a paso NEMA con drivers CL57T de lazo cerrado, Unity y Meta Quest para la capa XR. Diseño de la arquitectura modular en tres capas y plan de integración incremental.
+**Proceso:** Levantamiento de requerimientos funcionales (qué debe hacer el sistema) y no funcionales (precisión, accesibilidad, costo). Evaluación y selección de tecnologías: Python + ZeroMQ (ZMQ) como middleware de coordinación, ESP32-C3 con MicroPython como controlador embebido de la plataforma robótica, motores paso a paso NEMA con drivers CL57T de lazo cerrado, Unity y Meta Quest para la capa XR. Diseño de la arquitectura modular en tres capas y plan de integración incremental.
 
 **Entregables:** Especificación de requerimientos del sistema. Diagrama de arquitectura y diagrama de comunicación entre subsistemas. Plan de implementación con secuencia de integración.
 
@@ -28,7 +28,7 @@ El proyecto sigue una metodología de diseño de ingeniería en cuatro fases sec
 
 **Objetivo:** Construir el prototipo funcional que cumple con la especificación de requerimientos.
 
-**Proceso:** Desarrollo paralelo de los tres subsistemas con puntos de integración definidos. Primero se valida la plataforma robótica de forma independiente: movilidad, control del brazo y retroalimentación de sensores. Luego se integra el servidor ROS2 y se verifica la comunicación robot-servidor con métricas de latencia. Finalmente se agrega la capa XR y se valida el flujo completo de teleoperación: comando del operador → ROS2 → robot → retroalimentación visual al operador.
+**Proceso:** Desarrollo paralelo de los tres subsistemas con puntos de integración definidos. Primero se valida la plataforma robótica de forma independiente: movilidad, control del brazo y retroalimentación de sensores. Luego se integra el servidor Python/ZMQ y se verifica la comunicación robot-servidor en red local. Finalmente se agrega la capa XR y se valida el flujo completo de teleoperación: comando del operador → ZMQ → robot → retroalimentación visual al operador.
 
 **Entregables:** Prototipo integrado funcional. Protocolo de operación documentado. Registro de issues encontrados y mitigaciones aplicadas durante la integración.
 
