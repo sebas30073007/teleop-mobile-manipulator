@@ -12,4 +12,15 @@ El subsistema robótico integra una **plataforma móvil de tipo diferencial reha
 ![Robot completo con manipulador montado]({{ "/assets/img/manipulador_robot_completo.jpg" | relative_url }})
 
 ## Arquitectura física
-(Importar diagrama de arquitectura fisica)
+
+> Pendiente por documentar
+>
+> Actualmente esta información no está disponible en el repositorio.
+>
+> Para completar esta sección se necesita:
+> - Diagrama de arquitectura física del robot completo.
+> - Leyenda de componentes mecánicos, electrónicos y de percepción.
+> - Versión del diseño físico correspondiente a la evidencia fotográfica.
+>
+> Esta información es necesaria porque permite:
+> - Entender la integración física de subsistemas durante la réplica académica.

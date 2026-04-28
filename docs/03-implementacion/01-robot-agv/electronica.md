@@ -38,7 +38,7 @@ Tarjeta de control de motor DC de **diseño propio**, basada en topología de pu
 - Arranque seguro en estado `DISARMED`: la salida al motor permanece deshabilitada hasta habilitación explícita
 
 ## Imágenes de la PCB
-### Esquema del peunte H
+### Esquema del puente H
 ![Esquema del puente H]({{ "/assets/img/puente_h_esquema.jpg" | relative_url }})
 ### Vista superior PCB ensamblada
 ![PCB recién soldada]({{ "/assets/img/puente_h_pcb_soldada.jpg" | relative_url }})

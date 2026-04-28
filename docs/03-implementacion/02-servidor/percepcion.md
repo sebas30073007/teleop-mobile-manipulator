@@ -1,47 +1,45 @@
 ---
-title: "Percepción y SLAM"
+title: "Percepción"
 nav_order: 3
 parent: "Servidor"
 ---
 
-# Percepción y SLAM
+# Percepción
 
 El sistema de percepción combina dos sensores complementarios para cubrir las necesidades de navegación y teleoperación: el **RPLiDAR C1** para mapeo 2D y el **Intel RealSense D435i** para percepción 3D y streaming al operador XR.
 
 ## Sensores
 
-| Sensor | Uso principal | Interface |
+| Sensor | Uso principal | Interfaz |
 |---|---|---|
-| RPLiDAR C1 | Navegación 2D, SLAM, detección de obstáculos | USB → `/scan` |
-| Intel RealSense D435i | Percepción 3D, visual odometry, streaming RGB-D al XR | USB → `/camera/*` |
+| RPLiDAR C1 | Navegación 2D, detección de obstáculos, grid de ocupación | USB → worker de LiDAR en NUC |
+| Intel RealSense D435i | Percepción 3D y streaming RGB-D al XR | USB → worker de cámara en NUC |
 
 ## Pipeline de percepción
 
 ```
 RPLiDAR C1             RealSense D435i
      │                       │
-  /scan             /camera/depth/image
-     │               /camera/color/image
+  LiDAR worker         Camera worker
      │                       │
      └──────────┬────────────┘
                 │
-         Servidor ROS
+           NUC Python
                 │
-    ┌───────────┼───────────┐
-    │           │           │
-  SLAM       Nube de     Streaming
-  2D         puntos      RGB-D → XR
+        Publicación ZMQ
+                │
+              XR UI
 ```
 
-## SLAM 2D
+## Navegación 2D basada en grid
 
-El sistema de navegación autónoma utiliza el láser 2D para:
+El sistema de navegación actual utiliza el láser 2D para:
 
-- Construir un mapa 2D del entorno de almacén mediante **SLAM** (paquete `slam_toolbox` o `gmapping`)
-- Localizar el robot dentro del mapa construido
-- Detectar obstáculos en tiempo real para evitarlos
+- Generar un grid de ocupación local del entorno
+- Detectar obstáculos en tiempo real
+- Proveer asistencia visual de contexto al operador XR
 
-El mapa generado se comparte al headset XR para visualizarlo como minimap en la interfaz de teleoperación.
+Actualmente el enfoque es teleoperación con percepción asistida. El mapeo global queda como expansión futura.
 
 ## Percepción 3D (RealSense D435i)
 
@@ -56,7 +54,7 @@ En la interfaz XR, el stream de video del RealSense es la **vista principal del 
 ## Estado actual
 
 - [x] Sensores integrados al SBC a bordo (RPLiDAR C1 + RealSense D435i)
-- [x] Topics publicados y verificados individualmente
-- [ ] Pipeline SLAM activo con mapa generado
-- [ ] Transmisión de mapa al headset XR
+- [x] Canales ZMQ publicados y verificados individualmente
+- [ ] Integración de mapeo global del entorno (fase futura)
+- [ ] Transmisión de minimapa global al headset XR
 - [ ] Stream RGB-D estable al Meta Quest

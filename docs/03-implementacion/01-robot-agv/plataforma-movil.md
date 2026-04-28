@@ -22,7 +22,7 @@ La plataforma cuenta con:
 
 Los motores son controlados por los **módulos Puente H ESP32-C3** diseñados para este proyecto (ver [Electrónica]({{ "/docs/03-implementacion/01-robot-agv/electronica" | relative_url }})).
 
-![Conexiones del driver]({{ "assets\img\manipulador_manufactura_top.jpg" | relative_url }})
+![Conexiones del driver]({{ "/assets/img/manipulador_manufactura_top.jpg" | relative_url }})
 
 ### Configuración de drivers
 

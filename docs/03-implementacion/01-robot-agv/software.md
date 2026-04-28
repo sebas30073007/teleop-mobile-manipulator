@@ -6,11 +6,11 @@ parent: "Robot AGV"
 
 # Software del Robot AGV
 
-El stack de software del robot se divide en dos capas: el **firmware embebido** en los módulos Puente H (ESP32-C3) y el **sistema de navegación y control** basado en ROS corriendo en la computadora de a bordo.
+El stack de software del robot se divide en dos capas: el **firmware embebido** en los módulos Puente H (ESP32-C3) y el **sistema de coordinación** corriendo en la NUC a bordo.
 
-## Firmware ESP32-C3 (Módulos Puente H)
+## Firmware ESP32-C3 (MicroPython)
 
-Cada módulo Puente H corre un firmware independiente que implementa:
+Cada módulo Puente H corre firmware en **MicroPython** que implementa:
 
 - Máquina de estados (`DISARMED` → `ARMED` → ejecución)
 - Lectura del DIP switch al arranque para selección de modo de comunicación
@@ -19,31 +19,31 @@ Cada módulo Puente H corre un firmware independiente que implementa:
 - Control PWM sobre `GPIO6` (PWM_0) y `GPIO7` (PWM_1)
 - Canal USB-C siempre activo como interfaz de debug prioritaria
 
-## Stack ROS
+## Stack NUC (Python 3.12 + ZMQ)
 
 {: .note }
-La integración ROS está en progreso. La arquitectura de nodos está definida; los detalles de implementación se actualizarán conforme avance la integración.
+La coordinación actual entre NUC, sensores, interfaz XR y control del robot se implementa con Python 3.12 y ZeroMQ.
 
-### Nodos principales previstos
+### Componentes principales previstos
 
-| Nodo | Función |
+| Componente | Función |
 |---|---|
-| `motor_driver_node` | Publica comandos al bus I²C hacia los módulos Puente H |
-| `odometry_node` | Lee encoders y publica `/odom` |
-| `cmd_vel_bridge` | Traduce `geometry_msgs/Twist` a comandos de velocidad por motor |
-| `manipulator_node` | Controla los motores del manipulador |
-| `lidar_node` | Driver del RPLiDAR C1 → `/scan` |
-| `realsense_node` | Driver del Intel RealSense D435i → `/depth/image`, `/color/image` |
+| `command_listener` | Recibe comandos JSON desde Meta Quest vía ZMQ (port 5002) |
+| `motor_bridge` | Traduce comandos de movimiento a instrucciones para ESP32-C3 |
+| `manipulator_bridge` | Coordina comandos del manipulador 3DOF |
+| `camera_worker` | Captura/transforma stream de cámara y lo publica por ZMQ |
+| `lidar_worker` | Publica grid de ocupación y estado por ZMQ |
+| `status_worker` | Publica heartbeat y estado general del sistema |
 
 ### Topología de comunicación
 
 ```
-Operador (XR / PC)
+Operador (Meta Quest / PC)
        │
-   [WiFi / ROS]
+   [WiFi / ZMQ]
        │
  ┌─────┴──────┐
- │  SBC a bordo│  ← computadora de abordo
+ │  NUC a bordo│  ← Python 3.12
  └─────┬──────┘
        ├── I²C → Puente H #1 (motor derecho)
        ├── I²C → Puente H #2 (motor izquierdo)
@@ -56,6 +56,6 @@ Operador (XR / PC)
 - [x] Firmware ESP32-C3 funcional (todos los modos de comunicación)
 - [x] Control de motores individual validado por USB-C
 - [x] Control validado por WiFi y BLE
-- [ ] Nodo ROS `motor_driver_node` — en desarrollo
-- [ ] Integración de odometría con encoders
-- [ ] Nodo del manipulador con cinemática
+- [ ] Integración de control completo de base desde interfaz XR
+- [ ] Integración de control completo de manipulador 3DOF
+- [ ] Documentación de scripts finales de despliegue en NUC

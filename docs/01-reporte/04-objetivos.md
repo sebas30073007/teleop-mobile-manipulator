@@ -8,7 +8,7 @@ parent: "Reporte"
 
 ## Objetivo general
 
-Diseñar, integrar y validar experimentalmente una plataforma de teleoperación robótica orientada a tareas logísticas, compuesta por un robot móvil-manipulador, un servidor de coordinación basado en ROS2 y una interfaz de operación en realidad extendida (XR) sobre Meta Quest, evaluando su desempeño técnico y usabilidad en escenarios controlados de almacén simulado.
+Diseñar, integrar y validar experimentalmente una plataforma de teleoperación robótica orientada a tareas logísticas, compuesta por un robot móvil-manipulador, un servidor de coordinación basado en Python y ZeroMQ (ZMQ), y una interfaz de operación en realidad extendida (XR) sobre Meta Quest, evaluando su desempeño técnico y usabilidad en escenarios controlados de almacén simulado.
 
 ## Objetivos específicos
 
