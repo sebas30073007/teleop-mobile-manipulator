@@ -1,7 +1,7 @@
 ---
 title: "Arquitectura general del sistema"
 nav_order: 3
-parent: "Manual de réplica académica"
+parent: "Documentación"
 ---
 
 # Arquitectura general del sistema

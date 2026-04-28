@@ -1,7 +1,7 @@
 ---
 title: "Pruebas y validación académica"
 nav_order: 11
-parent: "Manual de réplica académica"
+parent: "Documentación"
 ---
 
 # Pruebas y validación académica

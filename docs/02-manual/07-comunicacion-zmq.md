@@ -1,7 +1,7 @@
 ---
 title: "Comunicación ZMQ"
 nav_order: 7
-parent: "Manual de réplica académica"
+parent: "Documentación"
 ---
 
 # Comunicación ZMQ

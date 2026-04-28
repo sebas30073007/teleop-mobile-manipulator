@@ -1,7 +1,7 @@
 ---
 title: "Seguridad"
 nav_order: 13
-parent: "Manual de réplica académica"
+parent: "Documentación"
 ---
 
 # Seguridad

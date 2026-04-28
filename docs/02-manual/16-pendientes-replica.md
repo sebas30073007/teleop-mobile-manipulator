@@ -1,7 +1,7 @@
 ---
 title: "Pendientes para réplica completa"
 nav_order: 16
-parent: "Manual de réplica académica"
+parent: "Documentación"
 ---
 
 # Pendientes para réplica completa

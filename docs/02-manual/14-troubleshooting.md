@@ -1,7 +1,7 @@
 ---
 title: "Troubleshooting"
 nav_order: 14
-parent: "Manual de réplica académica"
+parent: "Documentación"
 ---
 
 # Troubleshooting

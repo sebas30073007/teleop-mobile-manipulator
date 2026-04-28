@@ -1,19 +1,19 @@
 ---
-title: "Manual de réplica académica"
+title: "Documentación"
 nav_order: 2
 has_children: true
 permalink: /manual-replica/
 ---
 
-# Manual de réplica académica
+# Documentación
 
-Este manual organiza el proyecto de teleoperación robótica como una guía académica de réplica.
+Este repositorio organiza el proyecto de teleoperación robótica como una guía académica de réplica.
 
 ## Propósito
 
-- Explicar la arquitectura vigente del sistema.
-- Documentar qué partes están implementadas y cuáles siguen en desarrollo.
-- Guiar una réplica académica sin inventar información técnica no disponible.
+- Explicar la arquitectura del sistema.
+- Documentar el desarrollo de los subsistemas.
+- Guiar paso a paso el desarrollo del proyecto.
 
 ## Cómo leer este manual
 
@@ -22,6 +22,6 @@ Este manual organiza el proyecto de teleoperación robótica como una guía acad
 3. Revisa cada subsistema y después [Puesta en marcha]({{ "/docs/02-manual/10-puesta-en-marcha" | relative_url }}).
 4. Cierra con [Pruebas y validación]({{ "/docs/02-manual/11-pruebas-validacion" | relative_url }}), [Estado actual]({{ "/docs/02-manual/15-estado-actual" | relative_url }}) y [Pendientes para réplica completa]({{ "/docs/02-manual/16-pendientes-replica" | relative_url }}).
 
-## Alcance del manual
+## Alcance de la documentación
 
 Este sitio prioriza la **réplica académica**. No es una guía industrial ni un manual comercial de producto final.

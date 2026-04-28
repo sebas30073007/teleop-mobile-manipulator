@@ -1,7 +1,7 @@
 ---
 title: "Estado actual del proyecto"
 nav_order: 15
-parent: "Manual de réplica académica"
+parent: "Documentación"
 ---
 
 # Estado actual del proyecto

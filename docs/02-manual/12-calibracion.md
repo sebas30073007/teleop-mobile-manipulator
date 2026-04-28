@@ -1,7 +1,7 @@
 ---
 title: "Calibración"
 nav_order: 12
-parent: "Manual de réplica académica"
+parent: "Documentación"
 ---
 
 # Calibración

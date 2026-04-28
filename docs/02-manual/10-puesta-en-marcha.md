@@ -1,7 +1,7 @@
 ---
 title: "Puesta en marcha"
 nav_order: 10
-parent: "Manual de réplica académica"
+parent: "Documentación"
 ---
 
 # Puesta en marcha

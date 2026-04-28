@@ -1,7 +1,7 @@
 ---
 title: "Sistema de control en Python 3.12"
 nav_order: 8
-parent: "Manual de réplica académica"
+parent: "Documentación"
 ---
 
 # Sistema de control en Python 3.12

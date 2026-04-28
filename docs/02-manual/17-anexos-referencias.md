@@ -1,7 +1,7 @@
 ---
 title: "Anexos y referencias"
 nav_order: 17
-parent: "Manual de réplica académica"
+parent: "Documentación"
 ---
 
 # Anexos y referencias

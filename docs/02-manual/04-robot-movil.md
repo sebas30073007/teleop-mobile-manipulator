@@ -1,7 +1,7 @@
 ---
 title: "Subsistema del robot móvil"
 nav_order: 4
-parent: "Manual de réplica académica"
+parent: "Documentación"
 ---
 
 # Subsistema del robot móvil

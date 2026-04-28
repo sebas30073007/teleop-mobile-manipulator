@@ -1,7 +1,7 @@
 ---
 title: "Integración con Meta Quest / Meta XR SDK 83.0"
 nav_order: 9
-parent: "Manual de réplica académica"
+parent: "Documentación"
 ---
 
 # Integración con Meta Quest / Meta XR SDK 83.0

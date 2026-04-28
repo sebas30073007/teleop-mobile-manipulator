@@ -1,7 +1,7 @@
 ---
 title: "Subsistema del manipulador"
 nav_order: 5
-parent: "Manual de réplica académica"
+parent: "Documentación"
 ---
 
 # Subsistema del manipulador

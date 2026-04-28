@@ -1,7 +1,7 @@
 ---
 title: "Electrónica y control embebido"
 nav_order: 6
-parent: "Manual de réplica académica"
+parent: "Documentación"
 ---
 
 # Electrónica y control embebido
