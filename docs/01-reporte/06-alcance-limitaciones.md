@@ -10,7 +10,7 @@ parent: "Reporte"
 
 El sistema desarrollado cubre la integración completa de tres subsistemas en un entorno controlado de laboratorio, abarcando desde el diseño mecánico y electrónico del robot hasta la interfaz de usuario XR y el middleware de coordinación.
 
-**Plataforma robótica:** Un robot móvil con base de tracción diferencial — dos motores paso a paso NEMA23 con drivers de lazo cerrado CL57T — y un brazo manipulador de dos grados de libertad (articulaciones de hombro y codo), capaz de navegar en superficies planas interiores y realizar operaciones de pick-and-place con objetos de geometría simple y peso moderado.
+**Plataforma robótica:** Un robot móvil con base de tracción diferencial — dos motores paso a paso NEMA23 con drivers de lazo cerrado CL57T — y un brazo manipulador de tres grados de libertad para tareas de pick-and-place en entorno controlado.
 
 **Servidor de coordinación:** Un servicio central basado en Python y ZeroMQ (ZMQ) que gestiona la comunicación bidireccional entre la plataforma robótica y la interfaz XR, procesa el stream de cámara para retroalimentación visual al operador, y ejecuta los comandos de movimiento en tiempo real sobre red local (WiFi/LAN).
 

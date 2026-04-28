@@ -57,7 +57,17 @@ Validación de la plataforma móvil con los módulos Puente H de diseño propio.
 
 Prueba térmica del módulo Puente H bajo carga continua durante 60 minutos.
 
-<!-- {% include video_youtube.html id="YOUTUBE_ID" title="Prueba robustez Puente H — 1 hora" %} -->
+> Pendiente por documentar
+>
+> Actualmente esta información no está disponible en el repositorio.
+>
+> Para completar esta sección se necesita:
+> - Enlace de video de prueba de robustez prolongada.
+> - Parámetros de carga y condiciones ambientales de la prueba.
+> - Registro temporal de temperatura durante la sesión.
+>
+> Esta información es necesaria porque permite:
+> - Sustentar con evidencia reproducible el desempeño térmico del módulo.
 
 **Resultados:**
 - El módulo operó de forma estable durante toda la prueba

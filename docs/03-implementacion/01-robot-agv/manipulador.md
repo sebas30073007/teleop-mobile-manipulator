@@ -6,7 +6,7 @@ parent: "Robot AGV"
 
 # Manipulador
 
-El manipulador es un **brazo de 3 grados de libertad construido con lamina de cero**, diseñado específicamente para tareas de pick-and-place en entornos de logística de e-commerce. Incluye un gripper de accionamiento lineal por cremallera y piñón.
+El manipulador es un **brazo de 3 grados de libertad construido con lámina de acero**, diseñado específicamente para tareas de pick-and-place en entornos de logística de e-commerce. Incluye un gripper de accionamiento lineal por cremallera y piñón.
 
 ## Diseño y materiales
 
@@ -24,9 +24,9 @@ El diseño prioriza:
 | Eslabón 1 | Acero 0.6 mm, transmisión HTD3M 50T (2.5:1) |
 | Eslabón 2 | Acero 0.6 mm, transmisión HTD3M 50T (2.5:1) |
 | Base / hombro | Acero 1.2 mm, transmisión HTD3M 50T (1:1) |
-| obot móvil | Acero 1.2 mm (APOLO) |
+| Robot móvil | Acero 1.2 mm (APOLO) |
 | Gripper | Cremallera + piñón, accionado con pololu con reductor (100:1) |
-| Actuadores | NEMA17 + reductor planetario 10:1 + redictor polea (2.5:1) |
+| Actuadores | NEMA17 + reductor planetario 10:1 + reductor de polea (2.5:1) |
 | Chumaceras | Baleros en articulaciones |
 | Sensores | Intel RealSense D435i + RPLiDAR C1 (en torre) |
 
@@ -48,8 +48,17 @@ Las piezas estructurales principales fueron cortadas en láser a partir de lámi
 
 ![Ensamble completo del manipulador]({{ "/assets/img/manipulador_ensamble.jpg" | relative_url }})
 
-<!-- Video prueba estática del robot con manipulador — reemplazar YOUTUBE_ID -->
-<!-- {% include video_youtube.html id="YOUTUBE_ID" title="Prueba estática — robot móvil con manipulador" %} -->
+> Pendiente por documentar
+>
+> Actualmente esta información no está disponible en el repositorio.
+>
+> Para completar esta sección se necesita:
+> - Enlace definitivo de video de prueba estática del robot con manipulador.
+> - Fecha y condiciones de la prueba grabada.
+> - Criterios de aceptación usados en esa prueba.
+>
+> Esta información es necesaria porque permite:
+> - Validar trazabilidad de evidencia experimental del subsistema mecánico.
 
 
 ## CAD y archivos fuente
