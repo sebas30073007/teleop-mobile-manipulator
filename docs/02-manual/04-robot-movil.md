@@ -1,10 +1,10 @@
 ---
-title: "Subsistema del robot móvil"
+title: "Robot móvil"
 nav_order: 4
 parent: "Documentación"
 ---
 
-# Subsistema del robot móvil
+# Robot móvil
 
 ## Descripción
 

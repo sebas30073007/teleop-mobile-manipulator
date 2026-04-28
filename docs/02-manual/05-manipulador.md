@@ -1,10 +1,10 @@
 ---
-title: "Subsistema del manipulador"
+title: "Manipulador"
 nav_order: 5
 parent: "Documentación"
 ---
 
-# Subsistema del manipulador
+# Manipulador
 
 ## Descripción
 

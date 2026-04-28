@@ -1,10 +1,10 @@
 ---
-title: "Arquitectura general del sistema"
+title: "Arquitectura del sistema"
 nav_order: 3
 parent: "Documentación"
 ---
 
-# Arquitectura general del sistema
+# Arquitectura del sistema
 
 La arquitectura vigente conecta operación XR, comunicación ZMQ, control en Python 3.12 y control embebido en ESP32-C3 con MicroPython.
 
