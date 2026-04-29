@@ -14,15 +14,7 @@ El reporte puede leerse de forma lineal, de contexto a referencias, o consultars
 ## Presentacion Tesis
 
 
-<object
-  data="/assets/downloads/datasheet_puente_h_esp32c3.pdf"
-  type="application/pdf"
-  width="130%"
-  height="600px">
-  <p>Your browser can’t display PDFs.
-     <a href="/assets/downloads/datasheet_puente_h_esp32c3.pdf">Download the PDF</a>.
-  </p>
-</object>
+
 
 
 
