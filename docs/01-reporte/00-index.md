@@ -15,7 +15,7 @@ Este reporte documenta el sistema robótico de teleoperación para logística de
 <iframe 
   src="{{ '/assets/downloads/Proyecto_Terminal.pdf' | relative_url }}" 
   width="100%" 
-  height="700px"
+  height="500px"
   style="border: 1px solid #ddd; border-radius: 8px;">
 </iframe>
 
