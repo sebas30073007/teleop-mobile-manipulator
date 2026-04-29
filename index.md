@@ -7,6 +7,8 @@ nav_order: 1
 
 Bienvenido al sitio de documentación académica y de réplica del proyecto universitario.
 
+![Robot completo con manipulador montado]({{ "assets\img\PROYECTO.png" | relative_url }})
+
 ## ¿Qué es este proyecto?
 
 Es una plataforma de teleoperación para robot móvil con manipulador, operada desde interfaz XR en Meta Quest.
