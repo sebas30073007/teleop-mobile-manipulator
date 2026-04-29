@@ -19,7 +19,7 @@ El manipulador debía ejecutar tareas de pick-and-place en entornos de logístic
 
 ## Diseño
 
-![Manipulador completo — vista lateral]({{ "assets\img\render.png" | relative_url }})
+![Manipulador completo — vista lateral]({{ "/assets/img/render.png" | relative_url }})
 
 El brazo cuenta con **3 articulaciones rotacionales** más un **gripper lineal**:
 
@@ -56,7 +56,7 @@ Las piezas estructurales fueron cortadas en láser a partir de lámina de acero.
 
 ## Ensamble
 
-![Ensamble completo del manipulador]({{ "assets\img\AGV_manipulador completo.png" | relative_url }})
+![Ensamble completo del manipulador]({{ "/assets/img/AGV_manipulador completo.png" | relative_url }})
 
 
 ### Gripper
@@ -67,7 +67,7 @@ El gripper del manipulador está compuesto por dos pinzas impresas en 3D de colo
 El accionamiento del gripper se realiza mediante un motor Pololu con reducción mecánica, el cual transmite el movimiento hacia un piñón central. Este piñón engrana con las cremalleras internas de ambas pinzas, permitiendo que se desplacen en sentidos opuestos. La geometría de las pinzas incluye refuerzos internos tipo costilla, lo que permite mantener una estructura ligera sin perder rigidez.
 
 Este diseño fue pensado para tareas de manipulación básica, donde el robot pueda sujetar objetos sin requerir un mecanismo demasiado pesado o complejo. Al estar ubicado en el extremo del segundo eslabón, el gripper representa la herramienta final del manipulador y define directamente la capacidad de interacción física del robot con su entorno.
-![Gripper]({{ "assets\img\Manipulador gripper.png" | relative_url }})
+![Gripper]({{ "/assets/img/Manipulador gripper.png" | relative_url }})
 
 El gripper está controlado por un ESP32-C3 dedicado, conectado directamente a la NUC por USB independiente (COM5). Ver [Controlador de drivers]({{ "/docs/02-manual/03-robot-agv/controlador-cl57t" | relative_url }}) y [Software embebido]({{ "/docs/02-manual/03-robot-agv/software" | relative_url }}).
 
@@ -82,7 +82,7 @@ En la imagen izquierda se aprecia una de las articulaciones principales del mani
 
 En la imagen derecha se observa un acercamiento al sistema de polea, banda y rodamiento tensor. El rodamiento funciona como apoyo adicional para mejorar la tensión de la banda y reducir holguras durante el movimiento. Este tipo de solución fue importante para que el manipulador pudiera moverse de forma más controlada, especialmente considerando que la estructura trabaja con varios ejes, bandas y elementos atornillados.
 
-![transmisión lateral y eje rotacional de eslabones]({{ "assets\img\Mecanismos.png" | relative_url }})
+![transmisión lateral y eje rotacional de eslabones]({{ "/assets/img/Mecanismos.png" | relative_url }})
 
 
 
@@ -97,7 +97,7 @@ También se observa la estructura en forma de “C” que eleva el manipulador s
 El volumen interno de esta estructura también se aprovecha para alojar componentes electrónicos, como drivers CL57T y cableado, reduciendo el ruido visual del robot y optimizando el uso del espacio disponible.
 
 
-![Base rotatoria — motor y Soporte de base rotatoria]({{ "assets\img\Eje rotacional.png" | relative_url }})
+![Base rotatoria — motor y Soporte de base rotatoria]({{ "/assets/img/Eje rotacional.png" | relative_url }})
 
 
 
@@ -112,7 +112,7 @@ Las imágenes también muestran los sistemas de tensión implementados con rodam
 En la vista derecha se aprecia uno de los sensores finales de carrera montado cerca del recorrido físico del manipulador. Estos sensores se colocaron en puntos estratégicos para funcionar como referencia de calibración y límite mecánico. Su ubicación permite definir una posición cercana al cero del sistema sin interferir con el movimiento normal del brazo.
 
 
-![Poleas y correas — vista diagonal]({{ "assets\img\Poleas.png" | relative_url }})
+![Poleas y correas — vista diagonal]({{ "/assets/img/Poleas.png" | relative_url }})
 
 
 

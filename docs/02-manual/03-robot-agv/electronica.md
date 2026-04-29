@@ -61,7 +61,7 @@ El estado `PWM_0 = 1` y `PWM_1 = 1` simultáneamente está **prohibido**: provoc
 
 ## PCB
 
-![PCB recién soldada]({{ "assets\img\Puente H e instalación.png" | relative_url }})
+![PCB recién soldada]({{ "/assets/img/Puente H e instalación.png" | relative_url }})
 
 La imagen muestra el módulo puente H diseñado para el proyecto y su instalación dentro de la estructura del manipulador. La distribución de la PCB busca concentrar los elementos principales de control y potencia en una sola placa compacta, reduciendo el espacio necesario para el sistema electrónico y facilitando su integración dentro del robot.En la imagen de la derecha se observa cómo ambos módulos puente H fueron colocados dentro de la estructura metálica que eleva el manipulador sobre la plataforma móvil. Esta decisión permite aprovechar un espacio que ya formaba parte de la estructura mecánica, evitando agregar cajas externas o soportes adicionales.Además de optimizar el espacio disponible, esta ubicación ayuda a disminuir el ruido visual del prototipo, ya que gran parte del cableado y de la electrónica queda contenida dentro del cuerpo del robot. De esta forma, la integración final se ve más limpia, compacta y ordenada, manteniendo los módulos cerca de los actuadores que controlan.
 

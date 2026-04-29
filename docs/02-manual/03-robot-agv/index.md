@@ -9,7 +9,7 @@ has_children: true
 
 El subsistema robótico integra una **plataforma móvil de tipo diferencial rehabilitada** con un **manipulador de 3 grados de libertad construido desde cero**. Ambas estructuras usan módulos embebidos para realizar la operación de bajo nivel de la parte movil como del manipulador.
 
-![Robot completo con manipulador montado]({{ "assets\img\AGV.png" | relative_url }})
+![Robot completo con manipulador montado]({{ "/assets/img/AGV.png" | relative_url }})
 
 ## Subsecciones
 

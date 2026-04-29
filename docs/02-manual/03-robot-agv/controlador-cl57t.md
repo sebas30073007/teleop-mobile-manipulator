@@ -8,7 +8,7 @@ parent: "Robot AGV"
 
 Placa de diseño propio basada en **ESP32-C3** que genera las señales de paso para los tres drivers de motor del manipulador. Cada driver es un **CL57T** (cerrado-lazo, compatible con NEMA17).
 
-![Controlador]({{ "assets\img\Controlador.png" | relative_url }})
+![Controlador]({{ "/assets/img/Controlador.png" | relative_url }})
 
 ## Requisitos
 
@@ -72,7 +72,7 @@ NEMA17 + reductor planetario × 3 (articulaciones del manipulador)
 
 Los finales de carrera definen los puntos de referencia (cero) de cada articulación para el proceso de homing.
 
-![Final de carrera — articulación superior — base del manipulador]({{ "assets\img\Finales de carrera.png" | relative_url }})
+![Final de carrera — articulación superior — base del manipulador]({{ "/assets/img/Finales de carrera.png" | relative_url }})
 
 
 ### Estado publicado hacia la NUC

@@ -14,7 +14,7 @@ La plataforma debía soportar el peso del manipulador y la electrónica, moverse
 
 La solución adoptada es una **plataforma diferencial de tipo uniciclo rehabilitada**. Se conservó la estructura mecánica original y se sustituyeron los drivers de motor, cableado y electrónica de control para integrarlos con el sistema de teleoperación.
 
-![Plataforma móvil base]({{ "assets\img\Hardware base.png" | relative_url }})
+![Plataforma móvil base]({{ "/assets/img/Hardware base.png" | relative_url }})
 
 Características de diseño:
 
@@ -39,19 +39,19 @@ Se usan dos módulos en arquitectura maestro–esclavo sobre bus I²C:
 
 El **módulo maestro** recibe los comandos desde la NUC y controla al **módulo esclavo** en cadena (daisy chain I²C).
 
-![Conexiones del driver]({{ "assets\img\PuenteH.png" | relative_url }})
+![Conexiones del driver]({{ "/assets/img/PuenteH.png" | relative_url }})
 
 ### Re-habilitación
 
 Se sustituyó el cableado y se montaron los módulos PCB de diseño propio sobre la estructura existente.
 
-![Prueba en piso]({{ "assets\img\Primer prueba de movilidad.png" | relative_url }})
+![Prueba en piso]({{ "/assets/img/Primer prueba de movilidad.png" | relative_url }})
 
 ### Integración estructural con el manipulador
 
 El manipulador se monta sobre una **caja metálica de elevación** que se fija a la plataforma aprovechando los puntos estructurales del chasis, incluyendo zonas cercanas a los tornillos de las ruedas caster.
 
-![Unión plataforma móvil y caja de elevación]({{ "assets\img\Integración estructural.png" | relative_url }})
+![Unión plataforma móvil y caja de elevación]({{ "/assets/img/Integración estructural.png" | relative_url }})
 
 ## Validación
 
