@@ -2,7 +2,7 @@ title: Teleoperación móvil-manipulador
 
 description: Manual académico y de réplica para proyecto universitario de robótica teleoperada con realidad mixta.
 theme: just-the-docs
-
+baseurl: "/teleop-mobile-manipulator"
 url: https://sebas30073007.github.io/teleop-mobile-manipulator
 
 aux_links:
