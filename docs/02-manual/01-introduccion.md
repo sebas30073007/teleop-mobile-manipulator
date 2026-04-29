@@ -10,7 +10,7 @@ Este proyecto propone la teleoperación de un robot móvil (AGV) con manipulador
 
 ## Problema que aborda
 
-Las tareas logísticas en centros de distribución local son el punto que más costo representa dentro del envio de cualquier mercancia. La teleoperación busca habilitar operación remota con apoyo de interfaz inmersiva para personas con discapacidad motriz en miembros inferiores (sector poblacional con tendencia de desempleo).
+Las tareas logísticas en centros de distribución local son el punto que más costo representa dentro del envio de cualquier mercancia. La teleoperación busca habilitar operación remota con apoyo de interfaz inmersiva para personas con discapacidad motriz en miembros inferiores (sector poblacional con gran tasa de desempleo).
 
 ## Qué incluye el sistema
 
