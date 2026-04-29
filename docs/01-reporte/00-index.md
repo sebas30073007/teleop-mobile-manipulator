@@ -14,7 +14,7 @@ Este reporte documenta el sistema robótico de teleoperación para logística de
 
 
 <iframe
-  src="{{ site.baseurl }}/assets/donwloads/Proyecto Terminal.pdf"
+  src="{{ https://sebas30073007.github.io/teleop-mobile-manipulator }}/assets/donwloads/Proyecto Terminal.pdf"
   width="100%"
   height="800"
   style="border: none;">
