@@ -10,7 +10,7 @@ parent: "Reporte"
 
 El comercio electrónico ha dejado de ser un canal alternativo para convertirse en eje central de las cadenas de suministro modernas. Entre 2019 y 2024, las ventas globales en línea crecieron de forma sostenida, superando las proyecciones previas a la pandemia y consolidando un mercado que demanda capacidad logística a una escala sin precedente [1][2]. En México, el evento Hot Sale 2025 registró un crecimiento del 23.7% respecto al año anterior, con ventas por $42,725 millones de pesos — cifra que ilustra la velocidad con la que el consumo digital se convierte en presión sobre las operaciones de almacén y distribución [5].
 
-![Crecimiento retail y e-commerce]({{ "/assets/img/diagramacontexto1.png" | relative_url }})
+![Diagrama Contexto 1]({{ "/assets/img/diagramacontexto1.png" | relative_url }})
 
 Esta aceleración no es neutral para la logística. Las tres operaciones más sensibles al volumen — picking (selección de productos), packing (empaque) y sortation (clasificación) — concentran la mayor proporción de costos laborales y de error en los centros de distribución. Cuando los volúmenes de pedido escalan y los tiempos prometidos de entrega se acortan, la variabilidad de demanda se convierte en el principal factor de riesgo operativo: el sistema logístico debe absorber picos de hasta tres o cuatro veces el volumen promedio sin degradar la calidad del servicio.
 
