@@ -7,22 +7,17 @@ permalink: /reporte/
 
 # Reporte del proyecto
 
-Este reporte documenta el proceso de investigación, diseño y validación del sistema robótico de teleoperación para logística desarrollado como proyecto terminal de ingeniería. La narrativa avanza de manera deliberada: primero se establece el contexto macroeconómico que da urgencia al problema, luego se caracterizan las brechas operativas y sociales que orientan la solución hacia la inclusión, y finalmente se describe la arquitectura técnica, la metodología seguida y los resultados obtenidos.
-
-El reporte puede leerse de forma lineal, de contexto a referencias, o consultarse por sección según el área de interés. Cada capítulo está redactado para ser autosuficiente; sin embargo, las referencias cruzadas entre secciones permiten comprender con mayor profundidad las decisiones de diseño y sus motivaciones.
+Este reporte documenta el sistema robótico de teleoperación para logística desarrollado como proyecto terminal de ingeniería. La narrativa avanza de la siguiente manera: primero se establece el contexto macroeconómico que da urgencia al problema, luego se caracterizan las brechas operativas y sociales que orientan la solución hacia la inclusión, y finalmente se describe la arquitectura técnica, la metodología seguida.
 
 ## Presentacion Tesis
 
 
-<object
-  data="/assets/downloads/datasheet_puente_h_esp32c3.pdf"
-  type="application/pdf"
-  width="130%"
-  height="600px">
-  <p>Your browser can’t display PDFs.
-     <a href="/assets/downloads/datasheet_puente_h_esp32c3.pdf">Download the PDF</a>.
-  </p>
-</object>
+<iframe 
+  src="{{ '/assets/downloads/datasheet_puente_h_esp32c3.pdf' | relative_url }}" 
+  width="100%" 
+  height="700px"
+  style="border: 1px solid #ddd; border-radius: 8px;">
+</iframe>
 
 
 
