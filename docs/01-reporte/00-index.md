@@ -13,7 +13,7 @@ Este reporte documenta el sistema robótico de teleoperación para logística de
 
 
 <iframe 
-  src="{{ '/assets/downloads/datasheet_puente_h_esp32c3.pdf' | relative_url }}" 
+  src="{{ '/assets/downloads/Proyecto_Terminal.pdf' | relative_url }}" 
   width="100%" 
   height="700px"
   style="border: 1px solid #ddd; border-radius: 8px;">
