@@ -27,27 +27,27 @@ El sistema se organiza en tres capas funcionales diseñadas para ser independien
 
 ```
 [ Interfaz XR — Meta Quest + Unity ]
-           ↕  WebSocket / ROSbridge
-[ Servidor ROS2 — Middleware + Percepción ]
+           ↕  ZeroMQ (ZMQ)
+[ NUC embarcada — Middleware + Percepción ]
            ↕  WiFi / Serial
 [ Plataforma Robótica — Base móvil + Brazo ]
 ```
 
 ### Capa 1: Plataforma robótica
 
-**Base móvil:** Tracción diferencial con dos motores paso a paso NEMA23 controlados por drivers CL57T de lazo cerrado. Los encoders integrados en los drivers permiten control de posición preciso sin acumulación de error por pérdida de pasos. La electrónica de control está centralizada en un microcontrolador ESP32-C3, que recibe comandos de velocidad desde el servidor ROS2 y los traduce en señales de paso y dirección para los drivers.
+**Base móvil:** Tracción diferencial con dos motores paso a paso NEMA23 controlados por drivers CL57T de lazo cerrado. Los encoders integrados en los drivers permiten control de posición preciso sin acumulación de error por pérdida de pasos. La electrónica de control está centralizada en un microcontrolador ESP32-C3 con firmware en MicroPython, que recibe comandos de velocidad desde la NUC y los traduce en señales de paso y dirección para los drivers.
 
-**Brazo manipulador:** Dos grados de libertad — articulación de hombro (rotación en plano vertical) y articulación de codo (flexión) — accionados por motores paso a paso NEMA17 en el hombro y NEMA34 en el codo (mayor par requerido por el mayor momento de carga). El efector final es una garra de dos dedos accionada por servomotor, controlada directamente desde el nodo ROS2 del brazo.
+**Brazo manipulador:** Tres grados de libertad con articulaciones de hombro y codo, más efector final de garra para tareas de pick-and-place. El control de movimiento se coordina desde la NUC y se ejecuta mediante controladores embebidos ESP32-C3.
 
 **Sensores:** Cámara RGB montada en el extremo del brazo para retroalimentación visual al operador. La posición de montaje en el efector permite al operador ver el objeto objetivo desde el punto de vista del robot durante la operación de agarre.
 
-### Capa 2: Servidor de coordinación (middleware ROS2)
+### Capa 2: Servidor de coordinación (middleware Python + ZMQ)
 
-El servidor corre sobre una PC con Ubuntu y ROS2. Su función es actuar como hub de coordinación entre la plataforma robótica y la interfaz XR, gestionando todos los flujos de datos del sistema:
+El servidor corre en la Intel NUC embarcada en el robot, con Python 3.12 y ZeroMQ. Su función es actuar como hub de coordinación entre la plataforma robótica y la interfaz XR, gestionando todos los flujos de datos del sistema:
 
-- **Recepción de comandos:** Nodo ROSbridge que expone un WebSocket hacia la interfaz XR, recibe comandos de movimiento en formato JSON y los publica como mensajes ROS2 estándar (`cmd_vel` para la base, ángulos para el brazo).
-- **Control de la base móvil:** Nodo que suscribe a `cmd_vel` y transmite las señales correspondientes al ESP32-C3 vía WiFi o serial.
-- **Control del brazo:** Nodo que recibe ángulos objetivo por articulación y coordina el movimiento secuencial del hombro y el codo.
+- **Recepción de comandos:** Listener ZMQ que recibe comandos de movimiento en formato JSON desde la interfaz XR.
+- **Control de la base móvil:** Servicio que traduce comandos de movimiento y transmite las señales correspondientes al ESP32-C3 vía WiFi o serial.
+- **Control del brazo:** Servicio que recibe objetivos por articulación y coordina el movimiento secuencial del brazo.
 - **Procesamiento de video:** El stream de la cámara del robot se recibe en el servidor, se comprime y se retransmite hacia la interfaz XR.
 - **Telemetría:** Estado del sistema (velocidad actual, ángulos del brazo, estado de la garra, indicadores de batería) publicado hacia la interfaz XR para su visualización en el HUD del operador.
 
@@ -67,7 +67,7 @@ La interfaz incluye un HUD superpuesto con indicadores de estado: nivel de bater
 
 ## Decisiones de diseño clave
 
-**¿Por qué ROS2?** ROS2 ofrece comunicación DDS confiable entre nodos, un ecosistema maduro de drivers de hardware para robots (motores, cámaras, sensores), y facilidad de integración con herramientas externas (Unity, Python, C++). Construir el middleware desde cero habría duplicado el esfuerzo de desarrollo sin añadir valor al sistema.
+**¿Por qué Python + ZMQ?** El proyecto utiliza un middleware ligero con ZeroMQ para simplificar la integración en red local entre NUC y Unity (Meta Quest), usando mensajes JSON y puertos dedicados por tipo de dato. Esta arquitectura reduce complejidad de despliegue para el contexto actual del prototipo.
 
 **¿Por qué ESP32-C3?** Integra WiFi y Bluetooth en un solo chip, tiene capacidad de cómputo suficiente para control de motores en tiempo real, y su ecosistema de desarrollo (Arduino/ESP-IDF) permite prototipado rápido. El bajo costo por unidad facilita reemplazos durante fases de prueba sin impacto significativo en presupuesto.
 

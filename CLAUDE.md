@@ -43,16 +43,28 @@ index.md                        # root homepage (served at /)
 docs/
   index.md                      # nav_exclude: true duplicate homepage
   01-reporte/                   # project research report (12 pages)
-  03-implementacion/
-    01-robot-agv/               # mobile robot + manipulator (6 pages)
+  02-manual/                    # main documentation — "Documentación" section
+    00-index.md                 # section root (nav_order: 2, has_children: true)
+    01-introduccion.md
+    02-arquitectura-general.md
+    03-robot-agv/               # L2 parent — Robot AGV (5 child pages)
       index.md, plataforma-movil.md, manipulador.md,
       electronica.md, software.md, pruebas.md
-    02-servidor/                # server/middleware (4 pages)
+    04-servidor/                # L2 parent — Servidor / NUC (3 child pages)
       index.md, middleware.md, percepcion.md, pruebas.md
-    03-xr-metaquest/            # XR / Meta Quest (4 pages)
+    05-xr-metaquest/            # L2 parent — XR Meta Quest (3 child pages)
       index.md, unity.md, interfaz.md, pruebas.md
-  04-integracion-validacion/    # integration testing & results (4 pages)
+    06-validacion/              # L2 parent — Validación del sistema (3 child pages)
+      index.md, plan-experimentos.md, metricas.md, resultados.md
+    07-puesta-en-marcha.md
+    08-seguridad.md
+    09-troubleshooting.md
+    10-estado-actual.md
+    11-pendientes.md
+    12-anexos.md
 ```
+
+Nav hierarchy: Documentación (L1) → Robot AGV / Servidor / XR / Validación (L2) → individual pages (L3). The `parent:` value in L3 pages must match the L2 page's `title:` exactly.
 
 Documentation is written in Spanish.
 

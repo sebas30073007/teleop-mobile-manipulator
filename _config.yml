@@ -1,11 +1,12 @@
-title: Just the Docs Template
-description: A starter template for a Jeykll site using the Just the Docs theme!
+title: Teleoperación móvil-manipulador
+
+description: Manual académico y de réplica para proyecto universitario de robótica teleoperada con realidad mixta.
 theme: just-the-docs
 
-url: https://just-the-docs.github.io
+url: https://sebas30073007.github.io/teleop-mobile-manipulator
 
 aux_links:
-  Template Repository: https://github.com/just-the-docs/just-the-docs-template
+  Repositorio del proyecto: https://github.com/sebas30073007/teleop-mobile-manipulator
 
 defaults:
   - scope:
