@@ -7,22 +7,28 @@ has_children: true
 
 # NUC — Nodo Maestro de Percepción
 
-La **NUC (Intel NUC)** es el computador embarcado del robot. No existe un servidor externo separado: la NUC viaja a bordo y actúa como nodo maestro de percepción, procesamiento y coordinación, ejecutando backend en **Python 3.12**.
+La **NUC (Intel NUC i7)** es el computador embarcado del robot. No existe un servidor externo separado: la NUC viaja a bordo y actúa como nodo central de percepción, procesamiento y coordinación, ejecutando backend en **Python 3.12**.
 
-## Arquitectura física
+[Ver código fuente NUC](https://github.com/sebas30073007/teleop-mobile-manipulator/blob/main/assets/downloads/NUC_master_code.py){: .btn .btn-outline }
+
+## Conexiones físicas
 
 ```
 ┌──────────────────────────────────────────┐
 │             NUC (embarcada)              │
 │                                          │
-│  RealSense D435i (USB)                   │
-│  RPLiDAR C1     (USB)                    │
-│  ESP32-C3       (USB) → bus I2C → PCBs  │
+│  COM3 — RPLiDAR C1         (USB)         │
+│  COM4 — Puente H maestro   (USB)         │
+│           └─ I2C → Puente H esclavo      │
+│           └─ I2C → Controlador CL57T     │
+│  COM5 — Gripper ESP32-C3   (USB)         │
+│  USB  — Intel RealSense D435i            │
 │                                          │
 │  Python master server (ZMQ)             │
 │    PUB :5555  → video_rgb               │
-│    PUB :5001  → stat, lidar_grid, ...   │
-│    SUB :5002  ← cmd (desde Unity)       │
+│    PUB :5001  → JSON topics             │
+│    SUB :5002  ← comandos Unity          │
+│    PUB :5007  → paredes/puntos binarios │
 └──────────────────────────────────────────┘
             │ WiFi
             ▼
@@ -34,24 +40,24 @@ La **NUC (Intel NUC)** es el computador embarcado del robot. No existe un servid
 ## Responsabilidades
 
 - Adquisición de sensores (RealSense D435i y RPLiDAR C1)
-- Procesamiento selectivo según modo activo (visión por computadora con YOLOv8)
-- Publicación de video y datos vía ZeroMQ
-- Recepción de comandos desde Unity (Meta Quest 3)
-- Coordinación del control del robot y manipulador vía ESP32-C3
+- Procesamiento selectivo según modo activo (visión YOLOv8, grid LiDAR, pipeline de paredes)
+- Publicación de video, sensores y datos binarios vía ZeroMQ
+- Recepción de comandos desde Unity (modos, drive, manipulador, gripper)
+- Control de base móvil y manipulador vía serial → master bridge → I2C
+- Control de gripper vía serial directo (COM5)
 
 ## Subsecciones
 
-- [Middleware ZMQ]({{ "/docs/02-manual/04-servidor/middleware" | relative_url }}) — arquitectura de puertos, topics, contrato de datos
-- [Percepción]({{ "/docs/02-manual/04-servidor/percepcion" | relative_url }}) — pipeline RealSense y RPLiDAR
+- [Middleware ZMQ]({{ "/docs/02-manual/04-servidor/middleware" | relative_url }}) — arquitectura completa de puertos, topics, comandos y protocolos seriales
+- [Percepción]({{ "/docs/02-manual/04-servidor/percepcion" | relative_url }}) — pipeline RealSense, RPLiDAR, paredes y puntos
 - [Pruebas]({{ "/docs/02-manual/04-servidor/pruebas" | relative_url }}) — validaciones de canales y comunicación
 
 ## Estado del subsistema
 
 | Funcionalidad | Estado |
 |---|---|
-| NUC como nodo maestro operativo | ✅ Funcional |
 | Streaming ZMQ (video + lidar + estado) | ✅ Verificado |
-| Modos de cámara y lidar controlados desde Unity | ✅ Verificado |
-| Control base móvil (5002 → ESP32-C3 → motores) | ⏳ Pendiente |
-| Control manipulador 3DOF | ⏳ Pendiente |
-| Telemetría del robot en `stat` | ⏳ Pendiente |
+| Control base móvil y manipulador | ✅ Implementado |
+| Telemetría manipulador y gripper | ✅ Implementado |
+| Modos inmersivos (paredes, puntos LiDAR) | ✅ Implementado |
+| Watchdog ZMQ con paro seguro completo | ⏳ Parcial |

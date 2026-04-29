@@ -26,7 +26,7 @@ Cada módulo Puente H corre firmware en **MicroPython** que implementa:
 - Control PWM sobre `GPIO6` (PWM_0) y `GPIO7` (PWM_1)
 - Canal USB-C siempre activo como interfaz de debug prioritaria
 
-Ver la descripción completa del hardware en [Electrónica — Puente H]({{ "/docs/02-manual/03-robot-agv/electronica" | relative_url }}).
+Ver la descripción completa del hardware en [Puente H]({{ "/docs/02-manual/03-robot-agv/electronica" | relative_url }}).
 
 > **Pendiente:** Publicar el código fuente MicroPython y el procedimiento de flasheo.
 
@@ -62,7 +62,12 @@ Operador (Meta Quest)
        └── USB → Intel RealSense D435i
 ```
 
-> **Pendiente:** Publicar los scripts finales de arranque de la NUC y el archivo de dependencias (`requirements.txt` o equivalente).
+El código principal de la NUC está disponible en el repositorio:
+
+[⬇ NUC_master_code.py]({{ "/assets/downloads/NUC_master_code.py" | relative_url }}){: .btn .btn-outline }
+[Ver en GitHub](https://github.com/sebas30073007/teleop-mobile-manipulator/blob/main/assets/downloads/NUC_master_code.py){: .btn .btn-outline }
+
+> **Pendiente:** Publicar el archivo de dependencias (`requirements.txt`) y los scripts de arranque del sistema completo.
 
 ## Estado actual
 
@@ -71,6 +76,6 @@ Operador (Meta Quest)
 | Firmware ESP32-C3 (todos los modos de comunicación) | ✅ Funcional |
 | Control de motores individual validado por USB-C | ✅ Verificado |
 | Control validado por WiFi y BLE | ✅ Verificado |
-| Integración control base desde interfaz XR | ⏳ Pendiente |
-| Control completo manipulador 3DOF | ⏳ Pendiente |
+| Integración control base desde interfaz XR | ✅ Funcional |
+| Control completo manipulador 3DOF | ✅ Funcional |
 | Scripts finales de despliegue NUC documentados | ⏳ Pendiente |

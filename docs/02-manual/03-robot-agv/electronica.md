@@ -23,8 +23,6 @@ El driver de motor debía:
 - Arrancar en estado seguro (`DISARMED`) para evitar movimientos no deseados
 - Ser compacto y replicable con componentes de catálogo
 
-> **Pendiente:** Documentar la investigación y evaluación de drivers comerciales alternativos que se descartaron (L298N, DRV8833, etc.) y las razones de la decisión de diseño propio.
-
 ## Diseño del circuito
 
 ### Descripción general
@@ -32,8 +30,8 @@ El driver de motor debía:
 | Campo | Valor |
 |---|---|
 | Alimentación de potencia | 12 V a 24 V DC nominal |
-| Corriente continua recomendada | 4 A a 5 A |
-| Corriente intermitente máx. | hasta 8 A |
+| Corriente continua deseada | 4 A a 5 A |
+| Corriente pico máx. | hasta 8 A |
 | Microcontrolador | ESP32-C3 SuperMini |
 | Aislamiento lógica/potencia | Optoacopladores 4N25 |
 | MOSFETs alto lado | IRF9540N (canal P, 117 mΩ) |
@@ -41,7 +39,7 @@ El driver de motor debía:
 | Modos de control | Test, WiFi, BLE, HC-05 (UART), I²C maestro/esclavo |
 
 ### Bloques funcionales
-
+![Esquema del puente H]({{ "/assets/img/puente_h_esquema.jpg" | relative_url }})
 1. **Etapa de potencia** — Puente H con MOSFETs IRF540N (N) e IRF9540N (P)
 2. **Aislamiento de control** — Optoacopladores 4N25 que separan la lógica del circuito de conmutación
 3. **Control embebido** — ESP32-C3 administra modos de comunicación, lógica de mando y estados
@@ -51,31 +49,23 @@ El driver de motor debía:
 ### Tabla funcional del puente H
 
 {: .warning }
-El estado `IN_0 = 1` y `IN_1 = 1` simultáneamente está **prohibido**: provoca cortocircuito entre rieles de potencia.
+El estado `PWM_0 = 1` y `PWM_1 = 1` simultáneamente está **prohibido**: provoca cortocircuito entre rieles de potencia.
 
-| IN_0 | IN_1 | Estado | Descripción |
+| PWM_0 | PWM_1 | Estado | Descripción |
 |---|---|---|---|
 | 0 | 0 | Libre / deshabilitado | Ambos caminos apagados |
 | 1 | 0 | Giro A | Activa diagonal A; combinable con PWM |
 | 0 | 1 | Giro B | Activa diagonal B; combinable con PWM |
 | 1 | 1 | **PROHIBIDO** | Riesgo de cortocircuito |
 
-### Estimación de capacidad eléctrica
-
-| Corriente | Caída en puente | Pérdida total |
-|---|---|---|
-| 3 A | 0.48 V | 1.45 W |
-| 5 A | 0.81 V | 4.03 W |
-| 6 A | 0.97 V | 5.80 W |
-| 8 A | 1.29 V | 10.30 W |
 
 ## PCB
 
-### Imágenes
+![PCB recién soldada]({{ "assets\img\Puente H e instalación.png" | relative_url }})
 
-![Esquema del puente H]({{ "/assets/img/puente_h_esquema.jpg" | relative_url }})
+La imagen muestra el módulo puente H diseñado para el proyecto y su instalación dentro de la estructura del manipulador. La distribución de la PCB busca concentrar los elementos principales de control y potencia en una sola placa compacta, reduciendo el espacio necesario para el sistema electrónico y facilitando su integración dentro del robot.En la imagen de la derecha se observa cómo ambos módulos puente H fueron colocados dentro de la estructura metálica que eleva el manipulador sobre la plataforma móvil. Esta decisión permite aprovechar un espacio que ya formaba parte de la estructura mecánica, evitando agregar cajas externas o soportes adicionales.Además de optimizar el espacio disponible, esta ubicación ayuda a disminuir el ruido visual del prototipo, ya que gran parte del cableado y de la electrónica queda contenida dentro del cuerpo del robot. De esta forma, la integración final se ve más limpia, compacta y ordenada, manteniendo los módulos cerca de los actuadores que controlan.
 
-![PCB recién soldada]({{ "/assets/img/puente_h_pcb_soldada.jpg" | relative_url }})
+
 
 ### Asignación de pines ESP32-C3
 

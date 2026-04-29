@@ -14,6 +14,8 @@ La plataforma debía soportar el peso del manipulador y la electrónica, moverse
 
 La solución adoptada es una **plataforma diferencial de tipo uniciclo rehabilitada**. Se conservó la estructura mecánica original y se sustituyeron los drivers de motor, cableado y electrónica de control para integrarlos con el sistema de teleoperación.
 
+![Plataforma móvil base]({{ "assets\img\Hardware base.png" | relative_url }})
+
 Características de diseño:
 
 - **2 motores DC** con encoders para odometría
@@ -22,7 +24,7 @@ Características de diseño:
 
 ## Implementación
 
-![Plataforma móvil base]({{ "/assets/img/agv_plataforma_base.jpg" | relative_url }})
+
 
 ### Drivers y configuración I²C
 
@@ -37,13 +39,19 @@ Se usan dos módulos en arquitectura maestro–esclavo sobre bus I²C:
 
 El **módulo maestro** recibe los comandos desde la NUC y controla al **módulo esclavo** en cadena (daisy chain I²C).
 
-![Conexiones del driver]({{ "/assets/img/manipulador_manufactura_top.jpg" | relative_url }})
+![Conexiones del driver]({{ "assets\img\PuenteH.png" | relative_url }})
 
 ### Re-habilitación
 
 Se sustituyó el cableado y se montaron los módulos PCB de diseño propio sobre la estructura existente.
 
-![Prueba en piso]({{ "/assets/img/agv_prueba_piso.jpg" | relative_url }})
+![Prueba en piso]({{ "assets\img\Primer prueba de movilidad.png" | relative_url }})
+
+### Integración estructural con el manipulador
+
+El manipulador se monta sobre una **caja metálica de elevación** que se fija a la plataforma aprovechando los puntos estructurales del chasis, incluyendo zonas cercanas a los tornillos de las ruedas caster.
+
+![Unión plataforma móvil y caja de elevación]({{ "assets\img\Integración estructural.png" | relative_url }})
 
 ## Validación
 
@@ -54,6 +62,6 @@ Resultados de pruebas de la plataforma:
 | Movimiento diferencial en superficie plana | ✅ Estable |
 | Respuesta a comandos de dirección (F/B/L/R) | ✅ Correcta |
 | Temperatura MOSFETs bajo carga continua 60 min | ✅ Dentro del rango (disipadores efectivos) |
-| Control remoto extremo a extremo desde XR | ⏳ Pendiente integración completa |
+| Control remoto extremo a extremo desde XR | ✅ Completo |
 
 Ver evidencia completa en [Pruebas y calibración]({{ "/docs/02-manual/03-robot-agv/pruebas" | relative_url }}).

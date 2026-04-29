@@ -19,7 +19,8 @@
       "Bash(py -c \":*)",
       "Bash(py -m pip install pymupdf -q)",
       "Bash(py:*)",
-      "Bash(xxd \"E:/20_UNI/Html proyects/Claude_JustTheDocs_ProyectoTerminal/teleop-mobile-manipulator/assets/raw_assets/UI_contexto.txt\")"
+      "Bash(xxd \"E:/20_UNI/Html proyects/Claude_JustTheDocs_ProyectoTerminal/teleop-mobile-manipulator/assets/raw_assets/UI_contexto.txt\")",
+      "Bash(python3 -c ' *)"
     ]
   }
 }

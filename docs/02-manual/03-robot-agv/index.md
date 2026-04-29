@@ -11,6 +11,8 @@ El subsistema robótico integra una **plataforma móvil de tipo diferencial reha
 
 ![Robot completo con manipulador montado]({{ "assets\img\AGV.png" | relative_url }})
 
+![Vista frontal del robot con sensores]({{ "/assets/raw_assets/20260428_160750.jpg" | relative_url }})
+
 ## Subsecciones
 
 **Sistemas embebidos**

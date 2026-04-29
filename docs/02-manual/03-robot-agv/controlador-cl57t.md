@@ -66,6 +66,14 @@ Driver CL57T × 3
 NEMA17 + reductor planetario × 3 (articulaciones del manipulador)
 ```
 
+### Finales de carrera
+
+Los finales de carrera definen los puntos de referencia (cero) de cada articulación para el proceso de homing.
+
+![Final de carrera — articulación superior]({{ "/assets/raw_assets/20260428_160650.jpg" | relative_url }})
+
+![Final de carrera — base del manipulador]({{ "/assets/raw_assets/20260428_160702.jpg" | relative_url }})
+
 ### Estado publicado hacia la NUC
 
 La placa reporta estado periódicamente (`MANIP_STATE`) que incluye:
