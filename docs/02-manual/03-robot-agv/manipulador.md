@@ -1,6 +1,6 @@
 ---
 title: "Manipulador 3DOF"
-nav_order: 4
+nav_order: 3
 parent: "Robot AGV"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Puente H"
 nav_order: 1
-parent: "Robot AGV"
+parent: "Sistemas embebidos"
 ---
 
 # Módulo Puente H con ESP32-C3
@@ -108,22 +108,33 @@ El estado del DIP switch se lee **únicamente al encender** y fija el modo de op
 
 ## Firmware
 
-El firmware (MicroPython) acepta comandos tanto por USB-C (canal prioritario siempre activo) como por el medio configurado (WiFi/BLE/HC-05/I²C).
+El firmware corre en **MicroPython** sobre el ESP32-C3. Acepta comandos tanto por USB-C (canal prioritario siempre activo) como por el medio seleccionado con el DIP switch. El código fuente completo está disponible para descarga:
+
+[⬇ main_movil_final.py]({{ "/assets/downloads/main_movil_final.py" | relative_url }}){: .btn .btn-outline }
 
 ### Máquina de estados
 
-`DISARMED` → `ARMED` → ejecución de comandos
+```
+  BOOT
+   │  lee DIP switch (solo una vez)
+   ▼
+DISARMED ──── ARM explícito o botón largo ────► ARMED
+   ▲                                              │
+   └─── timeout 2 500 ms sin comando ────────────┘
+   │
+FAULT ◄─── cortocircuito / error de checksum
+```
 
-La salida al motor permanece deshabilitada en `DISARMED` hasta habilitación explícita.
+La salida al motor permanece deshabilitada en `DISARMED`. El ARM requiere un comando explícito, lo que impide que movimientos accidentales ocurran al encender o reconectar.
 
 ### Indicadores LED
 
 | Estado | Comportamiento del LED |
 |---|---|
-| `DISARMED` | Destellos con patrón del modo DIP configurado |
+| `DISARMED` | Ráfaga de N destellos cada 2.2 s (N = código DIP + 1) |
 | `ARMED` | LED fijo encendido |
-| Prueba en ejecución | Parpadeo lento a 0.5 Hz (1s ON / 1s OFF) |
-| Falla | Parpadeo rápido |
+| Prueba en ejecución | Parpadeo lento 0.5 Hz (1 s ON / 1 s OFF) |
+| Falla latched | Parpadeo rápido continuo |
 
 ### Comandos de control
 
@@ -134,12 +145,65 @@ La salida al motor permanece deshabilitada en `DISARMED` hasta habilitación exp
 | `L` | Izquierda |
 | `R` | Derecha |
 | `S` | Detener |
-| `T` | Modo prueba |
-| `-255` a `+255` | Consigna numérica de velocidad (con saturación automática) |
+| `T` | Activar modo prueba |
+| `-255` a `+255` | Consigna numérica directa (se satura a ±70 % de duty) |
 
-Todos los comandos se ejecutan mediante **rampas de aceleración** — ningún cambio de velocidad es instantáneo.
+Los comandos duales (maestro que controla motor local + motor remoto simultáneamente) se envían como `"F,B"` — el parser `parse_dual_frame()` separa la consigna del motor local de la del esclavo remoto.
 
-> **Pendiente:** Publicar el código fuente MicroPython completo (archivo `.py` de arranque y módulos de máquina de estados).
+### Protocolo I²C binario — tramas de 7 bytes
+
+En los modos maestro/esclavo todos los comandos al Puente H viajan como paquetes binarios de longitud fija. El maestro construye la trama y la envía; los esclavos la validan antes de ejecutar.
+
+```python
+# Estructura del paquete (PKT_LEN = 7 bytes)
+PKT_PREAMBLE = 0xA5   # byte 0 — marca de inicio fija
+
+CMD_STOP   = 0        # byte 2 — CMD_MODE: motor parado
+CMD_TARGET = 1        #           ir a consigna
+CMD_TEST   = 2        #           activar rutina de prueba interna
+
+PKT_FLAG_ARMED = 0x01 # byte 5 — FLAGS (bitmask)
+PKT_FLAG_FAULT = 0x02
+PKT_FLAG_TEST  = 0x04
+# byte 6 — XOR checksum de bytes 0-5
+```
+
+| Byte | Campo | Descripción |
+|---|---|---|
+| 0 | `PREAMBLE` | Siempre `0xA5` — marca de sincronía |
+| 1 | `SEQ` | Número de secuencia 0–255 para detección de duplicados |
+| 2 | `CMD_MODE` | `0` STOP, `1` TARGET, `2` TEST |
+| 3–4 | `LO`, `HI` | Consigna con signo como `int16` little-endian |
+| 5 | `FLAGS` | Bitmask: `ARMED (0x01)`, `FAULT (0x02)`, `TEST (0x04)` |
+| 6 | `CHECKSUM` | XOR de los bytes 0–5 |
+
+{: .warning }
+Si el checksum no coincide, el paquete se descarta silenciosamente y el motor permanece en su último estado. Nunca se ejecuta un movimiento con datos corruptos.
+
+### Deadtime y protección de conmutación
+
+Conmutar ambas diagonales del puente H simultáneamente provoca cortocircuito entre rieles de potencia. La función `apply_bridge_local_safe()` impone un tiempo muerto antes de activar la diagonal nueva:
+
+```python
+DEADTIME_US = 300   # 300 µs de espera entre cambios de diagonal
+
+# Al cambiar de dirección:
+#   1. Apagar ambas salidas PWM
+#   2. Esperar DEADTIME_US
+#   3. Activar la nueva diagonal
+```
+
+### Rampas de aceleración
+
+Ningún cambio de velocidad es instantáneo. El duty cycle sube o baja 1 % cada 20 ms hasta alcanzar la consigna:
+
+```python
+RAMP_INTERVAL_MS = 20   # tick de rampa cada 20 ms
+RAMP_STEP_PCT    = 1    # incremento máximo por tick: 1 % de duty
+MAX_SPEED_PCT    = 70   # velocidad máxima = 70 % de duty cycle
+```
+
+El tiempo mínimo para pasar de 0 % a velocidad máxima es 70 × 20 ms = **1.4 s**. Esto limita las corrientes de arranque y el estrés mecánico en los motores DC.
 
 ## Validación
 
