@@ -24,6 +24,15 @@ Salida del puente H desde osciloscopio, probando el circuito en protoboard y la 
 
 ---
 
+### Video de pruebas plataforma teleoperada
+
+<video controls width="100%">
+  <source src="{{ '/assets/vid/Test_movil_web.mp4' | relative_url }}" type="video/mp4">
+  Tu navegador no puede reproducir este video.
+</video>
+
+---
+
 ## Pruebas del Manipulador
 
 ### Prueba estática
@@ -39,6 +48,33 @@ Validación de rangos de movimiento y torque de cada articulación con el robot 
 ### Prueba de movimiento rápido
 
 Prueba preliminar de velocidad de movimiento del manipulador. Velocidades funcionales confirmadas.
+
+---
+
+### Video de pruebas calibración cero
+
+<video controls width="100%">
+  <source src="{{ '/assets/vid/Test_calibracion_web.mp4' | relative_url }}" type="video/mp4">
+  Tu navegador no puede reproducir este video.
+</video>
+
+---
+
+### Video de pruebas carga
+
+<video controls width="100%">
+  <source src="{{ '/assets/vid/Test_load_web.mp4' | relative_url }}" type="video/mp4">
+  Tu navegador no puede reproducir este video.
+</video>
+
+---
+
+### Video de pruebas repetitibilidad
+
+<video controls width="100%">
+  <source src="{{ '/assets/vid/Test_repetitibilidad_web.mp4' | relative_url }}" type="video/mp4">
+  Tu navegador no puede reproducir este video.
+</video>
 
 ---
 
