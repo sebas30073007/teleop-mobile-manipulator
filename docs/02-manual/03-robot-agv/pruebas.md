@@ -42,6 +42,15 @@ Prueba preliminar de velocidad de movimiento del manipulador. Velocidades funcio
 
 ---
 
+## Pruebas del Gripper
+
+<video controls width="100%">
+  <source src="{{ '/assets/vid/Test_gripper.mp4' | relative_url }}" type="video/mp4">
+  Tu navegador no puede reproducir este video.
+</video>
+
+---
+
 ## Pruebas de la Plataforma Móvil
 
 ### Movimiento diferencial
