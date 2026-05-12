@@ -61,9 +61,33 @@ El estado `PWM_0 = 1` y `PWM_1 = 1` simultáneamente está **prohibido**: provoc
 
 ## PCB
 
-![PCB recién soldada]({{ "/assets/img/Puente H e instalación.png" | relative_url }})
+El diseño de la PCB se realizó en **KiCad** siguiendo el flujo: esquemático → layout de dos capas → exportación de Gerbers para fabricación en JLCPCB.
 
-La imagen muestra el módulo puente H diseñado para el proyecto y su instalación dentro de la estructura del manipulador. La distribución de la PCB busca concentrar los elementos principales de control y potencia en una sola placa compacta, reduciendo el espacio necesario para el sistema electrónico y facilitando su integración dentro del robot.En la imagen de la derecha se observa cómo ambos módulos puente H fueron colocados dentro de la estructura metálica que eleva el manipulador sobre la plataforma móvil. Esta decisión permite aprovechar un espacio que ya formaba parte de la estructura mecánica, evitando agregar cajas externas o soportes adicionales.Además de optimizar el espacio disponible, esta ubicación ayuda a disminuir el ruido visual del prototipo, ya que gran parte del cableado y de la electrónica queda contenida dentro del cuerpo del robot. De esta forma, la integración final se ve más limpia, compacta y ordenada, manteniendo los módulos cerca de los actuadores que controlan.
+[⬇ Gerbers para fabricación (ZIP)]({{ "/assets/downloads/puente_h_gerbers.zip" | relative_url }}){: .btn .btn-outline }
+
+### Esquemático
+
+![Esquemático del Puente H]({{ "/assets/img/Esquematico PuenteH.png" | relative_url }})
+
+El esquemático captura todas las conexiones eléctricas del diseño: ESP32-C3 SuperMini, optoacopladores 4N25 para el aislamiento lógica/potencia, MOSFETs IRF540N (canal N) e IRF9540N (canal P) que forman las cuatro ramas del puente, conectores de potencia e I²C, y elementos de protección.
+
+### Layout PCB — 2 capas
+
+![PCB 2 capas — Puente H]({{ "/assets/img/PCB 2 layers PuenteH.png" | relative_url }})
+
+El ruteo en dos capas separa los planos de potencia —pistas anchas dimensionadas para corrientes continuas de hasta 8 A— de las señales lógicas del microcontrolador y los optoacopladores. Esta separación reduce el acoplamiento entre la etapa de conmutación y la lógica de control.
+
+### Fabricación
+
+![Vista de manufactura JLCPCB — Puente H]({{ "/assets/img/Manofactura JLCPCB PuenteH.png" | relative_url }})
+
+La vista de manufactura es el render que genera JLCPCB a partir de los Gerbers antes de confirmar la orden, seguido de la placa ya ensamblada con todos sus componentes soldados manualmente.
+
+### Instalación en el robot
+
+![Módulo Puente H instalado en la estructura del robot]({{ "/assets/img/Puente H e instalación.png" | relative_url }})
+
+La imagen muestra el módulo puente H y su instalación dentro de la estructura del manipulador. La distribución de la PCB concentra control y potencia en una sola placa compacta para facilitar la integración dentro del robot. En la imagen de la derecha se observa cómo ambos módulos Puente H quedaron alojados dentro de la estructura metálica que eleva el manipulador sobre la plataforma móvil, aprovechando espacio ya existente sin cajas externas adicionales. Esta ubicación mantiene el cableado contenido dentro del cuerpo del robot, logrando una integración más limpia y ordenada.
 
 
 

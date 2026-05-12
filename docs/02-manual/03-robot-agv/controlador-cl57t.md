@@ -8,7 +8,9 @@ parent: "Sistemas embebidos"
 
 Placa de diseño propio basada en **ESP32-C3** que genera las señales de paso para los tres drivers de motor del manipulador. Cada driver es un **CL57T** (cerrado-lazo, compatible con NEMA17).
 
-![Controlador]({{ "/assets/img/Controlador.png" | relative_url }})
+![Controlador CL57T — placa ensamblada]({{ "/assets/img/Controlador.png" | relative_url }})
+
+[⬇ Proyecto KiCad — Gerbers para fabricación (ZIP)]({{ "/assets/downloads/drivers_controller_gerbers.zip" | relative_url }}){: .btn .btn-outline }
 
 ## Requisitos
 
@@ -40,6 +42,28 @@ La placa genera las señales para los tres CL57T y gestiona las entradas digital
 | Entradas digitales | Finales de carrera para calibración |
 | Botón físico | Rutina de búsqueda de cero activable localmente |
 | Comunicación | I2C esclavo — recibe comandos del Puente H maestro |
+
+### Proceso de diseño en KiCad
+
+El diseño siguió el flujo estándar: esquemático → layout de dos capas → exportación de Gerbers para fabricación en JLCPCB.
+
+#### Esquemático
+
+![Esquemático del controlador de drivers CL57T]({{ "/assets/img/Esquematico DriversController.png" | relative_url }})
+
+El esquemático define las conexiones entre el ESP32-C3 SuperMini y los tres canales de salida PUL/DIR/ENABLE hacia los drivers CL57T, las entradas de los finales de carrera con pull-up, los conectores del bus I²C y el botón local de homing.
+
+#### Layout PCB — 2 capas
+
+![PCB 2 capas — controlador de drivers CL57T]({{ "/assets/img/PCB 2 layers Drivers-controller.png" | relative_url }})
+
+El ruteo en dos capas organiza las señales digitales de control (lógica 3.3 V del ESP32-C3) de forma compacta, con los conectores de salida hacia los drivers CL57T dispuestos en los bordes de la placa para facilitar el cableado dentro del manipulador.
+
+#### Fabricación
+
+![Vista de manufactura JLCPCB — controlador de drivers CL57T]({{ "/assets/img/Manofactura JLCPCB DriversController.png" | relative_url }})
+
+La vista de manufactura es el render generado por JLCPCB a partir de los Gerbers antes de confirmar la orden. A la derecha, la placa ya ensamblada con todos los componentes soldados y lista para programar.
 
 ## Resolución y rangos por eje
 

@@ -22,7 +22,16 @@
       "Bash(xxd \"E:/20_UNI/Html proyects/Claude_JustTheDocs_ProyectoTerminal/teleop-mobile-manipulator/assets/raw_assets/UI_contexto.txt\")",
       "Bash(python3 -c ' *)",
       "Bash(git *)",
-      "Bash(sort -t: -k3 -n)"
+      "Bash(sort -t: -k3 -n)",
+      "Bash(Select-String -Pattern \"Esquematic|PCB|Manofactura|Driver|PuenteH|Puente_H\")",
+      "PowerShell(Get-ChildItem \"E:\\\\20_UNI\\\\Html proyects\\\\Claude_JustTheDocs_ProyectoTerminal\\\\teleop-mobile-manipulator\\\\assets\\\\img\" | Where-Object { $_.Name -match \"Esquematic|PCB|Manofactura|Driver|PuenteH\" } | Select-Object Name)",
+      "Bash(rm \"E:\\\\20_UNI\\\\Html proyects\\\\Claude_JustTheDocs_ProyectoTerminal\\\\teleop-mobile-manipulator\\\\docs\\\\02-manual\\\\06-validacion\\\\index.md\")",
+      "Bash(rm \"E:\\\\20_UNI\\\\Html proyects\\\\Claude_JustTheDocs_ProyectoTerminal\\\\teleop-mobile-manipulator\\\\docs\\\\02-manual\\\\06-validacion\\\\plan-experimentos.md\")",
+      "Bash(rm \"E:\\\\20_UNI\\\\Html proyects\\\\Claude_JustTheDocs_ProyectoTerminal\\\\teleop-mobile-manipulator\\\\docs\\\\02-manual\\\\06-validacion\\\\metricas.md\")",
+      "Bash(rm \"E:\\\\20_UNI\\\\Html proyects\\\\Claude_JustTheDocs_ProyectoTerminal\\\\teleop-mobile-manipulator\\\\docs\\\\02-manual\\\\06-validacion\\\\resultados.md\")",
+      "Bash(rmdir \"E:\\\\20_UNI\\\\Html proyects\\\\Claude_JustTheDocs_ProyectoTerminal\\\\teleop-mobile-manipulator\\\\docs\\\\02-manual\\\\06-validacion\")",
+      "Bash(cp \"E:\\\\20_UNI\\\\Html proyects\\\\Claude_JustTheDocs_ProyectoTerminal\\\\teleop-mobile-manipulator\\\\assets\\\\raw_assets\\\\Logic_controler_stepper_motors_V2\\\\production\\\\PCB_control_manipulador_V2.zip\" \"E:\\\\20_UNI\\\\Html proyects\\\\Claude_JustTheDocs_ProyectoTerminal\\\\teleop-mobile-manipulator\\\\assets\\\\downloads\\\\drivers_controller_gerbers.zip\")",
+      "Bash(cp \"E:\\\\20_UNI\\\\Html proyects\\\\Claude_JustTheDocs_ProyectoTerminal\\\\teleop-mobile-manipulator\\\\assets\\\\raw_assets\\\\Puente_H_ESP32\\\\Puente_H\\\\production\\\\Puente_H.zip\" \"E:\\\\20_UNI\\\\Html proyects\\\\Claude_JustTheDocs_ProyectoTerminal\\\\teleop-mobile-manipulator\\\\assets\\\\downloads\\\\puente_h_gerbers.zip\")"
     ]
   }
 }

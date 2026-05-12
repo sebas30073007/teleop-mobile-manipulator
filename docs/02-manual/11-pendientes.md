@@ -1,20 +1,19 @@
 ---
-title: "Pendientes"
+title: "Trabajo a futuro"
 nav_order: 11
 parent: "Documentación"
 ---
 
-# Pendientes para réplica completa
+# Trabajo a futuro
 
-| Tema | Impacto |
-|---|---|
-| BOM completo del sistema | Alto |
-| Esquema eléctrico integral | Alto |
-| Ensamble mecánico paso a paso | Alto |
-| Código fuente firmware MicroPython ESP32-C3 | Alto |
-| Scripts y comandos de arranque NUC (Python 3.12) | Alto |
-| Procedimiento de calibración por subsistema | Alto |
-| Protocolo formal de seguridad | Alto |
-| Configuración de red reproducible | Medio |
-| Medición formal de latencia extremo a extremo | Medio |
-| Resultados experimentales consolidados | Alto |
+Líneas de desarrollo identificadas a partir de los resultados y limitaciones del proyecto terminal.
+
+## Hardware
+
+- **PCB dedicada para el gripper** — diseñar una placa propia para el controlador del gripper que reemplace el montaje en protoboard actual, mejorando la robustez mecánica y reduciendo el cableado suelto.
+
+## Control y modelos matemáticos
+
+- **Modelo matemático para robots móviles uniciclos** — implementar el modelo cinemático diferencial del AGV para calcular odometría y ejecutar trayectorias programadas, en lugar de depender exclusivamente del control manual directo desde la interfaz XR.
+- **Cinemática inversa del manipulador** — implementar el modelo de cinemática inversa de los 3 DOF para comandar el end-effector por posición cartesiana, en lugar de ángulos de articulación individuales.
+- **Captura de encoders para control en lazo cerrado** — integrar la lectura de los encoders de los motores de tracción en el firmware del Puente H para implementar control de velocidad y posición en lazo cerrado, eliminando la dependencia del control en lazo abierto actual.

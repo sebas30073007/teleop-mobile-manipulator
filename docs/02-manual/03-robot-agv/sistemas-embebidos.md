@@ -12,8 +12,11 @@ Los tres controladores embebidos del robot corren firmware **MicroPython** sobre
 | Controlador | PCB | Comunicación con NUC | Función principal |
 |---|---|---|---|
 | [Puente H]({{ "/docs/02-manual/03-robot-agv/electronica" | relative_url }}) | Diseño propio (KiCad) | USB-CDC COM4 (maestro) | Motores DC de tracción |
-| [CL57T]({{ "/docs/02-manual/03-robot-agv/controlador-cl57t" | relative_url }}) | Diseño propio | I²C addr `0x0B` vía maestro | 3 ejes del manipulador (PUL/DIR) |
+| [CL57T]({{ "/docs/02-manual/03-robot-agv/controlador-cl57t" | relative_url }}) | Diseño propio (KiCad) | I²C addr `0x0B` vía maestro | 3 ejes del manipulador (PUL/DIR) |
 | [Gripper]({{ "/docs/02-manual/03-robot-agv/controlador-gripper" | relative_url }}) | Protoboard (sin PCB) | USB-CDC COM5 | Pinza — posición en mm |
+
+{: .note }
+**Costo de fabricación PCBs (JLCPCB, lote de 10 piezas por diseño):** $5.00 USD producción · $17.50 USD envío · $130 MXN derechos de importación.
 
 ## Arquitectura I²C
 
