@@ -1,6 +1,6 @@
 ---
 title: "Manipulador 3DOF"
-nav_order: 4
+nav_order: 3
 parent: "Robot AGV"
 ---
 
@@ -50,11 +50,19 @@ Las piezas estructurales fueron cortadas en láser a partir de lámina de acero.
 
 {% include video_youtube.html id="HL85R2YZLBA" title="Construcción del manipulador 3DOF — Proyecto Terminal 2026" %}
 
+El proceso combinó **corte láser** y **doblado manual** con la dobladora disponible en laboratorio. Las piezas se diseñaron considerando las herramientas accesibles, lo que impuso una restricción importante: los ángulos de doblez eran muy ajustados, al límite de lo viable con la dobladora manual. Cuando una sección requería dobleces que no podían ejecutarse sin riesgo de fractura o deformación excesiva, la solución fue **dividir la pieza** en dos o más secciones y unirlas después mediante tornillería.
+
 ### Primeras piezas
+
+Las piezas que más iteraciones requirieron fueron las **piezas en L** que conectan la base con el primer eslabón y el motor: la combinación de tolerancias de manufactura y ajustes de diseño obligó a varias versiones de esta pieza en particular. Las demás piezas también tuvieron iteraciones, aunque menores. La mayoría se debió a barrenos faltantes que no justificaban un nuevo corte completo — bastaba taladrar el barreno en la pieza ya cortada.
+
+Como aprendizaje del proceso, la metodología de lámina doblada resultó adecuada para prototipado, pero presentó una limitación notable: **flexibilidad no deseada en el eje perpendicular al eje de carga**. La estructura era robusta en el eje principal, pero en el eje perpendicular cualquier fuerza mínima generaba oscilación visible. Son tensiones que no se contemplaron en el diseño original y son características de este tipo de armados con lámina — resistentes en una dirección, más débiles en la ortogonal. En ningún caso hubo deformación permanente ni daño al sistema, pero el juego mecánico — por flexibilidad del material, no por holgura en las uniones — fue perceptible durante la operación.
 
 ![Primeras piezas ensambladas]({{ "/assets/img/manipulador_primeras_piezas.jpg" | relative_url }})
 
 ## Ensamble
+
+El ensamble integra todos los subsistemas mecánicos del manipulador. Las secciones a continuación detallan cada uno de ellos: gripper, mecanismos de transmisión, eje rotacional de la base y sistema de poleas y sensores de límite.
 
 ![Ensamble completo del manipulador]({{ "/assets/img/AGV_manipulador completo.png" | relative_url }})
 

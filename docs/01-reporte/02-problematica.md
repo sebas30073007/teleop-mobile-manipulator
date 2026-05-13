@@ -10,9 +10,11 @@ parent: "Reporte"
 
 La transformación digital del comercio ha generado una paradoja operativa: mientras los volúmenes de pedido crecen de forma acelerada, la estructura laboral de los almacenes no ha evolucionado al mismo ritmo. Las tareas de surtido, traslado interno y abastecimiento continúan siendo intensivas en mano de obra, físicamente demandantes y difíciles de ejecutar desde cualquier otro lugar que no sea el piso del almacén. La dependencia de la presencia física del operador es la principal restricción operativa no resuelta por la logística actual.
 
-En paralelo, existe en México una población de 7.7 millones de personas con alguna forma de discapacidad motriz que enfrenta barreras sistémicas para acceder al empleo formal [7][8]. La tasa de informalidad laboral de esta población supera el 96%, lo que no refleja ausencia de capacidades cognitivas o de atención, sino ausencia estructural de herramientas de trabajo adaptadas a sus condiciones de movilidad [7]. A esto se agrega que el 62% de las personas con discapacidad en México carece de acceso a internet, limitando adicionalmente su participación en los modelos convencionales de teletrabajo [8].
+![Costos logísticos y última milla]({{ "/assets/img/Costos logisticos.png" | relative_url }})
 
-![Costos logísticos y última milla]({{ "/assets/img/full-problematica-costos.png" | relative_url }})
+En paralelo, existe en México una población de 9.5 millones de personas con alguna forma de discapacidad que enfrenta barreras sistémicas para acceder al empleo formal [7][8]. La tasa de informalidad laboral de esta población supera el 60%, lo que no refleja ausencia de capacidades cognitivas o de atención, sino ausencia estructural de herramientas de trabajo adaptadas a sus condiciones [7]. 
+
+![Discapacidad]({{ "/assets/img/Discapacidad.png" | relative_url }})
 
 ## Dos curvas que convergen
 
@@ -24,7 +26,6 @@ La problemática puede leerse como dos tendencias que se intersecan y cuya inter
 
 El espacio de intersección entre estas dos curvas es la teleoperación robótica con orientación inclusiva: un operador remoto controla un sistema físico en el almacén desde una interfaz diseñada para sus capacidades, ejecutando tareas logísticas concretas con precisión, sin necesidad de presencia física en el ambiente de trabajo y sin requerir infraestructura de movilidad que muchas personas con discapacidad no tienen.
 
-![Discapacidad y desempleo]({{ "/assets/img/full-problematica-discapacidad.png" | relative_url }})
 
 ## Por qué las soluciones existentes no cierran la brecha
 

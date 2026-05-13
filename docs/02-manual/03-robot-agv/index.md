@@ -13,9 +13,8 @@ El subsistema robótico integra una **plataforma móvil de tipo diferencial reha
 
 ## Subsecciones
 
-**Sistemas embebidos**
-- [Puente H]({{ "/docs/02-manual/03-robot-agv/electronica" | relative_url }}) — driver de motor DC de diseño propio (ESP32-C3), PCB, firmware, modos I2C
-- [Controlador de drivers (CL57T)]({{ "/docs/02-manual/03-robot-agv/controlador-cl57t" | relative_url }}) — placa ESP32-C3 que genera señales PUL/DIR/ENABLE para los 3 ejes del manipulador
+**Electrónica**
+- [Sistemas embebidos]({{ "/docs/02-manual/03-robot-agv/sistemas-embebidos" | relative_url }}) — Puente H, CL57T y gripper: MicroPython ESP32-C3, firmwares, protocolos I²C y USB
 
 **Mecánica**
 - [Plataforma móvil]({{ "/docs/02-manual/03-robot-agv/plataforma-movil" | relative_url }}) — base diferencial rehabilitada
@@ -32,5 +31,7 @@ El subsistema robótico integra una **plataforma móvil de tipo diferencial reha
 | Plataforma móvil diferencial | ✅ Construida y probada |
 | Manipulador 3DOF | ✅ Construido y probado |
 | Módulos Puente H PCB (×2) | ✅ Diseñados, ensamblados y probados |
-| Firmware ESP32-C3 (motores) | ✅ Funcional en todos los modos |
+| Firmware Puente H (ESP32-C3) | ✅ Funcional en todos los modos |
+| Firmware CL57T (ESP32-C3) | ✅ Funcional — homing, compensación muñeca |
+| Firmware gripper (ESP32-C3) | ✅ Funcional — control mm, stall detect |
 | Control NUC ↔ ESP32-C3 ↔ XR | ⏳ Integración en proceso |

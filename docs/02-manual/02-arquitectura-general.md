@@ -17,7 +17,7 @@ La idea central del sistema es que la **NUC (cerebro del robot) actúa como coor
 
 ## Diagrama general
 
-![Detalle]({{ "/assets/img/Diagrama detalle.png" | relative_url }})
+![Detalle]({{ "/assets/img/Arquitectura del sistema.png" | relative_url }})
 
 
 ## Interfaz XR en Meta Quest

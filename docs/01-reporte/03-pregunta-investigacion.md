@@ -6,17 +6,7 @@ parent: "Reporte"
 
 # Pregunta de investigación
 
-> **¿Cómo diseñar e integrar una plataforma de teleoperación móvil-manipulador con interfaz XR que permita a personas con discapacidad motriz ejecutar tareas logísticas de forma remota, reduciendo tiempos de operación y tasa de error respecto a una línea base manual, y manteniendo usabilidad aceptable para perfiles de usuario diversos?**
-
-## Dimensiones de la pregunta
-
-La pregunta de investigación se articula en torno a tres dimensiones técnicas interdependientes, cada una con implicaciones de diseño y de evaluación propias:
-
-**Dimensión 1 — Diseño de sistema:** ¿Qué arquitectura hardware-software permite integrar movilidad autónoma asistida, manipulación de objetos y visualización inmersiva en un sistema operable desde cualquier ubicación con conectividad de red local? Esta dimensión determina las decisiones de integración y la viabilidad técnica del prototipo.
-
-**Dimensión 2 — Desempeño operativo:** ¿Bajo qué condiciones el sistema alcanza métricas de tiempo y precisión comparables — o superiores — a la ejecución manual de las mismas tareas? ¿Cuáles son los factores limitantes de desempeño (latencia, precisión mecánica, retroalimentación visual)? Esta dimensión define los criterios cuantitativos de éxito del sistema.
-
-**Dimensión 3 — Usabilidad e inclusión:** ¿Qué características de la interfaz XR determinan la accesibilidad del sistema para operadores con diferentes grados y tipos de discapacidad motriz? ¿Qué carga cognitiva impone la teleoperación en condiciones controladas? Esta dimensión orienta las decisiones de diseño de interacción y los criterios de evaluación con usuarios.
+> **¿Cómo diseñar un sistema de operación remota que permita a personas con discapacidad motriz ejecutar tareas logísticas en nodos de distribución local asociados a la última milla?**
 
 ## Por qué esta pregunta es respondible mediante ingeniería
 

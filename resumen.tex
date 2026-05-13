@@ -1,0 +1,187 @@
+\documentclass[12pt,letterpaper]{article}
+
+% Arial (Helvetica como equivalente portable para pdflatex)
+\usepackage[scaled=1.0]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Idioma español (Mexico)
+\usepackage[spanish,mexico]{babel}
+
+% Márgenes — tamaño carta, 2.5 cm todos los lados
+\usepackage[letterpaper, margin=2.5cm]{geometry}
+
+% Interlineado sencillo
+\usepackage{setspace}
+\singlespacing
+\setlength{\parskip}{4pt}
+\setlength{\parindent}{0pt}
+
+% Secciones compactas
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{8pt}{3pt}
+
+% Hipervínculos sin color visible
+\usepackage[hidelinks]{hyperref}
+
+% Unidades SI
+\usepackage{siunitx}
+
+\begin{document}
+
+% ============================================================
+% Encabezado
+% ============================================================
+\begin{center}
+    {\large\textbf{Sistema de teleoperación de robot móvil-manipulador\\
+    para logística inclusiva}}\\[5pt]
+    Sebastián Méndez Villegas$^{1}$, Santiago Cuesta Machuca$^{1}$\\[2pt]
+    {\small $^{1}$Departamento de Estudios en Ingeniería para la Innovación,
+    Universidad Iberoamericana Ciudad de México}\\[1pt]
+    {\small \texttt{a2229332@correo.uia.mx}}
+\end{center}
+\vspace{4pt}\hrule\vspace{6pt}
+
+% ============================================================
+\section{Introducción}
+% ============================================================
+
+En México, las personas con discapacidad motriz en miembros inferiores enfrentan
+tasas de desocupación significativamente superiores al promedio nacional y acceso
+limitado a sectores que demandan movilidad física continua, como la logística y la
+distribución de mercancía \cite{inegi2023}. La teleoperación robótica mediada por
+interfaces de realidad extendida (XR) representa una alternativa tecnológica viable
+para habilitar trabajo remoto de alta complejidad desde posiciones estáticas, reduciendo
+barreras de inclusión laboral \cite{sheridan1992}. Investigaciones recientes han
+demostrado la utilidad de entornos de realidad virtual para aprender y ejecutar tareas
+de teleoperación \cite{lipton2018}, motivando el desarrollo de sistemas accesibles y
+de bajo costo. Este trabajo presenta el diseño, construcción e integración de un
+sistema completo de teleoperación compuesto por un robot móvil diferencial, un
+manipulador de tres grados de libertad (GDL) con pinza, y una interfaz inmersiva en
+Meta Quest~3.
+
+% ============================================================
+\section{Objetivo}
+% ============================================================
+
+Diseñar, construir y validar un sistema de teleoperación modular compuesto por una
+plataforma AGV diferencial con manipulador de 3~GDL y pinza de agarre, controlado
+mediante una interfaz de realidad mixta sobre Meta Quest~3, orientado a facilitar
+tareas logísticas remotas para personas con discapacidad motriz en miembros inferiores.
+
+% ============================================================
+\section{Métodos}
+% ============================================================
+
+El sistema se desarrolló en tres subsistemas integrados: plataforma robótica,
+electrónica-firmware embebido, y middleware de coordinación con interfaz XR.
+
+\textbf{Plataforma robótica.}
+La base móvil es un AGV diferencial rehabilitado con estructura de acero calibre~18,
+dos motores DC con encoders y cuatro ruedas locas (castor wheels) \cite{siegwart2011}.
+El manipulador de 3~GDL fue diseñado completamente en Autodesk Inventor y fabricado
+con acero cortado a láser (calibres 0.6 y 1.2~mm); los actuadores son motores NEMA17
+con reductor planetario 10:1 y transmisión por banda HTD3M relación 2.5:1 (reducción
+compuesta 25:1) \cite{siciliano2010}. La pinza de tipo piñón-cremallera (impresión 3D)
+opera con motor Pololu 100:1 y recorrido de \SI{80}{mm} controlado mediante encoder de
+cuadratura.
+
+\textbf{Electrónica embebida.}
+Se diseñó una PCB propia denominada \textit{Módulo Puente H ESP32-C3} en KiCad
+(12--24~V, 4~A nominal, 8~A pico, MOSFETs IRF540N/IRF9540N con aislamiento óptico 4N25).
+Tres microcontroladores ESP32-C3 ejecutan firmware en MicroPython: uno como maestro I\textsuperscript{2}C
+para control diferencial de tracción, uno como esclavo I\textsuperscript{2}C para
+generación de señales PUL/DIR hacia los drivers CL57T del manipulador, y uno por
+USB-CDC para control de posición del gripper con perfil trapezoidal de velocidad y
+detección de atasco.
+
+\textbf{Middleware y percepción.}
+Una computadora Intel NUC~i7 embarcada coordina el sistema con Python~3.12 y ZeroMQ.
+Los sensores incluyen una Intel RealSense~D435i (RGB-D, 640$\times$480 a 30~fps) con
+detección de objetos mediante YOLOv8~nano, y un RPLiDAR~C1 (LiDAR 2D, 12~Hz) para
+generación de grillas de ocupación en tres escalas (1, 2 y 3~m de radio, resolución
+de celda 1~cm).
+
+\textbf{Interfaz XR.}
+Una aplicación Unity compilada para Meta Quest~3 (Meta XR SDK~83.0) presenta en
+passthrough: panel de video RGB, grilla de ocupación LiDAR en 2D, controles
+deslizantes para los 3~GDL del manipulador, y panel de telemetría del sistema
+(posición de articulaciones, posición del gripper, estado de sensores), con
+retroalimentación háptica y sonora por los controladores del headset.
+
+% ============================================================
+\section{Resultados}
+% ============================================================
+
+La PCB fue fabricada, ensamblada y validada con temperatura máxima medida en los
+MOSFETs de \SI{61}{\degreeCelsius} bajo carga continua a \SI{60}{\minute} con
+disipadores pasivos, dentro del rango operativo admisible. El manipulador alcanzó
+todos los rangos de movimiento definidos: base $\pm$80°, codo 0°--136.5°, muñeca
+$-$220°--0°, con resoluciones de 27.78 y 69.44~pasos/grado respectivamente, sin
+pérdida de pasos en movimientos estáticos. La pinza completó el recorrido de
+\SI{80}{mm} sin pérdida de posición y activó la detección de obstrucción mecánica
+(stall) en menos de \SI{500}{\milli\second}; la calibración de extremos se recupera
+automáticamente tras un reinicio desde memoria JSON. El streaming de video fue
+validado a 30~fps y el ciclo de comandos de tracción opera a 15~Hz con latencia
+total inferior a \SI{50}{\milli\second}. La interfaz XR integra en tiempo real el
+video, la grilla LiDAR en sus tres modos, el control 3D del manipulador y la pinza
+desde el Meta Quest~3. Se verificó la teleoperación completa de extremo a
+extremo ---tracción, manipulación de 3~GDL y agarre--- con realimentación visual y
+háptica; el watchdog ZeroMQ detiene la tracción en \SI{350}{\milli\second} ante
+pérdida de enlace.
+
+% ============================================================
+\section{Conclusiones}
+% ============================================================
+
+El proyecto demuestra la viabilidad técnica de un sistema de teleoperación inmersivo
+para logística inclusiva construido íntegramente con hardware diseñado a medida y
+software de código abierto. La arquitectura modular basada en ZeroMQ, ESP32-C3 y
+Unity facilita la integración de subsistemas heterogéneos con baja latencia y alta
+cohesión funcional. La validación formal con usuarios objetivo ---personas con
+discapacidad motriz en miembros inferiores--- constituye el paso inmediato para
+cuantificar el impacto del sistema en empleabilidad y desempeño operativo. Como
+trabajo futuro se contemplan la incorporación de SLAM para mapeo autónomo del entorno,
+la transmisión RGB-D completa al headset y la integración de retroalimentación de
+fuerza en la pinza.
+
+% ============================================================
+\section*{Agradecimientos}
+% ============================================================
+
+Los autores agradecen el apoyo de la Universidad Iberoamericana Ciudad de México por
+los recursos y espacios de laboratorio utilizados en el desarrollo de este proyecto.
+
+% ============================================================
+\begin{thebibliography}{9}
+\addcontentsline{toc}{section}{Bibliografía}
+
+\bibitem{inegi2023}
+INEGI (2023). \textit{Encuesta Nacional sobre Discriminación 2022 (ENADIS)}.
+Instituto Nacional de Estadística y Geografía, México.
+\url{https://www.inegi.org.mx/programas/enadis/2022/}
+
+\bibitem{sheridan1992}
+Sheridan, T.~B. (1992).
+\textit{Telerobotics, Automation, and Human Supervisory Control}.
+MIT Press.
+
+\bibitem{lipton2018}
+Lipton, J.~I., Fay, A.~J., \& Rus, D. (2018).
+Baxter's Homunculus: Virtual Reality Spaces for Teleoperation Learning.
+\textit{IEEE Robotics and Automation Letters}, 3(3), 2344--2351.
+
+\bibitem{siciliano2010}
+Siciliano, B., Sciavicco, L., Villani, L., \& Oriolo, G. (2010).
+\textit{Robotics: Modelling, Planning and Control}.
+Springer-Verlag.
+
+\bibitem{siegwart2011}
+Siegwart, R., Nourbakhsh, I.~R., \& Scaramuzza, D. (2011).
+\textit{Introduction to Autonomous Mobile Robots}, 2nd~ed.
+MIT Press.
+
+\end{thebibliography}
+
+\end{document}
