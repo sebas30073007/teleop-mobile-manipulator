@@ -7,7 +7,7 @@ parent: "Reporte"
 # Referencias
 
 Las siguientes referencias, en formato IEEE, sustentan el marco contextual, la problemática y las decisiones metodológicas documentadas en este reporte.
-
+Vea en la pagina principal la presentación completa y la extenión completa de todas las fuentes consultadas.
 ---
 
 [1] A. Lipsman, "Global E-Commerce 2019," *EMARKETER*, Jun. 27, 2019. [En línea]. Disponible: https://www.emarketer.com/content/global-ecommerce-2019
