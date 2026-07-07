@@ -1,0 +1,477 @@
+Necesito reestructurar la herramienta de pruebas de latencia WF-IoT MR–Edge para que las pruebas sean iniciadas y controladas desde la PC, no desde la interfaz de Quest.
+
+Contexto:
+Ya existe una planeación para crear archivos nuevos bajo validation/ y docs/, sin modificar scripts existentes del proyecto principal. La interfaz Unity ya se ve en escena, pero actualmente no es práctico hacer clic desde Meta Quest. Por eso quiero que la PC, que simula la NUC/edge node, sea quien orqueste las pruebas. Meta Quest debe comportarse como endpoint automático: se conecta a la PC, recibe streams simulados y responde probes de latencia.
+
+Objetivo nuevo:
+Convertir la herramienta en un sistema PC-driven:
+
+PC simulando NUC:
+- inicia cada condición experimental C1–C7,
+- activa/desactiva video sintético,
+- activa/desactiva LiDAR sintético,
+- publica carga de sensores/video,
+- envía probes de latencia hacia Quest,
+- recibe respuestas de Quest,
+- calcula RTT usando solo el reloj de la PC,
+- guarda CSV detallado y CSV resumen.
+
+Meta Quest / Unity:
+- se conecta automáticamente a la IP de la PC configurada en Inspector,
+- no requiere interacción manual con botones,
+- recibe video/sensores para generar carga realista,
+- escucha probes enviados por la PC,
+- responde inmediatamente a cada probe,
+- opcionalmente muestra métricas en pantalla, pero no es quien controla la prueba.
+
+Importante:
+- No modificar scripts existentes del proyecto principal.
+- No modificar MainScene.
+- Trabajar solo en archivos nuevos dentro de validation/ y Assets/Scripts/WFIoTLatency/ si ya fueron copiados al proyecto Unity.
+- Mantener un socket ZeroMQ por thread.
+- La medición sigue siendo latencia MR–edge/protocolo, no latencia física completa del robot.
+
+============================================================
+CAMBIO DE ARQUITECTURA DE MEDICIÓN
+============================================================
+
+Antes:
+Unity enviaba latency_probe por 5002 y Python respondía latency_ack por 5001. Unity calculaba RTT y guardaba CSV.
+
+Ahora:
+Python/PC envía pc_latency_probe por 5001.
+Quest responde latency_pong por 5002.
+Python/PC calcula RTT y guarda CSV.
+
+Flujo deseado:
+
+PC Python
+  PUB :5001 topic pc_latency_probe
+      ↓
+Quest Unity endpoint
+  recibe probe
+  responde por PUB :5002 topic cmd, type latency_pong
+      ↓
+PC Python
+  SUB :5002 recibe pong
+  RTT = pc_receive_time - pc_send_time
+
+Ventaja:
+- No se necesita tocar la UI del Quest.
+- No hay que extraer CSV del Quest.
+- No se usan relojes diferentes para RTT.
+- La PC guarda todos los resultados.
+
+============================================================
+PYTHON — wfiot_nuc_latency_simulator.py
+============================================================
+
+Modificar o extender el simulador Python para que tenga dos modos:
+
+1. Modo legacy opcional:
+   - Quest envía latency_probe.
+   - Python responde latency_ack.
+   - Mantener si ya está implementado.
+
+2. Modo recomendado pc_orchestrated:
+   - Python inicia las pruebas.
+   - Python envía pc_latency_probe.
+   - Quest responde latency_pong.
+   - Python calcula RTT y guarda CSV.
+
+Agregar argumento CLI:
+--mode pc_orchestrated
+--auto-run
+--interactive
+--condition C1_control_only
+--duration 60
+--probe-rate 10
+--repetitions 1
+--warmup-samples 10
+
+Ejemplo:
+python validation/tools/wfiot_nuc_latency_simulator.py --mode pc_orchestrated --auto-run --duration 60 --probe-rate 10
+
+Puertos:
+- 5001 PUB: stat, mode_ack, lidar_grid, pc_latency_probe, test_control.
+- 5002 SUB: cmd, recibe latency_pong desde Quest.
+- 5555 PUB: video_rgb.
+- 5007 PUB opcional.
+
+Mantener regla:
+- Un solo sensor_pub_thread dueño del socket PUB :5001.
+- Todo lo que vaya a :5001 entra por sensor_queue.
+- cmd_listener_thread es el único dueño del SUB :5002.
+- video_pub_thread es el único dueño del PUB :5555.
+
+Nuevos topics PC → Quest por :5001:
+
+1. test_control
+Payload:
+{
+  "type": "start_condition",
+  "test_id": "C1_control_only_run1",
+  "condition": "C1_control_only",
+  "camera_mode": "off",
+  "lidar_mode": "off",
+  "video_enabled": false,
+  "lidar_enabled": false,
+  "probe_rate_hz": 10,
+  "duration_s": 60
+}
+
+2. pc_latency_probe
+Payload:
+{
+  "type": "pc_latency_probe",
+  "seq": 1,
+  "pc_send_unix": 1712000000.123,
+  "test_id": "C1_control_only_run1",
+  "condition": "C1_control_only"
+}
+
+3. test_control stop
+Payload:
+{
+  "type": "stop_condition",
+  "test_id": "C1_control_only_run1",
+  "condition": "C1_control_only"
+}
+
+Respuesta Quest → PC por :5002:
+
+Topic:
+cmd
+
+Payload:
+{
+  "type": "latency_pong",
+  "seq": 1,
+  "pc_send_unix": 1712000000.123,
+  "quest_recv_unity_time": 123.456,
+  "quest_send_unity_time": 123.457,
+  "test_id": "C1_control_only_run1",
+  "condition": "C1_control_only"
+}
+
+Python debe:
+- Registrar pc_send_unix por seq en pending_probes.
+- Al recibir latency_pong:
+  - pc_recv_unix = time.time()
+  - rtt_ms = (pc_recv_unix - pc_send_unix) * 1000
+  - guardar muestra en memoria y CSV.
+- No depender de timestamps de Quest para calcular RTT.
+- Guardar quest_recv_unity_time y quest_send_unity_time solo como información adicional.
+
+Condiciones C1–C7:
+
+C1_control_only:
+- video_enabled=false
+- lidar_enabled=false
+- camera_mode=off
+- lidar_mode=off
+- probe_rate=10
+
+C2_video_normal:
+- video_enabled=true
+- lidar_enabled=false
+- camera_mode=normal
+- lidar_mode=off
+- video_fps=30
+- probe_rate=10
+
+C3_lidar_detail:
+- video_enabled=false
+- lidar_enabled=true
+- camera_mode=off
+- lidar_mode=detail
+- lidar_hz=12
+- probe_rate=10
+
+C4_lidar_medium:
+- video_enabled=false
+- lidar_enabled=true
+- camera_mode=off
+- lidar_mode=medium
+- lidar_hz=8
+- probe_rate=10
+
+C5_lidar_panorama:
+- video_enabled=false
+- lidar_enabled=true
+- camera_mode=off
+- lidar_mode=panorama
+- lidar_hz=4
+- probe_rate=10
+
+C6_full_detail:
+- video_enabled=true
+- lidar_enabled=true
+- camera_mode=normal
+- lidar_mode=detail
+- video_fps=30
+- lidar_hz=12
+- probe_rate=10
+
+C7_full_panorama:
+- video_enabled=true
+- lidar_enabled=true
+- camera_mode=normal
+- lidar_mode=panorama
+- video_fps=30
+- lidar_hz=4
+- probe_rate=10
+
+Auto-run:
+Si --auto-run está activo:
+1. Esperar a que Quest mande un mensaje endpoint_ready.
+2. Correr C1–C7 en orden.
+3. Para cada condición:
+   - actualizar state,
+   - enviar test_control start,
+   - esperar 1 s de warm-up,
+   - enviar warmup probes, marcarlas warmup=true,
+   - enviar probes reales por duration o probeCount,
+   - enviar test_control stop,
+   - esperar 2 s entre condiciones.
+4. Exportar CSV detallado y resumen automáticamente.
+
+Interactive mode:
+Si --interactive está activo:
+- Mostrar menú en terminal:
+  1. Start C1_control_only
+  2. Start C2_video_normal
+  3. Start C3_lidar_detail
+  ...
+  8. Run all
+  9. Stop current
+  0. Exit
+
+CSV Python oficial:
+Guardar en validation/logs/:
+
+1. Detalle:
+wfiot_latency_pc_orchestrated_results_YYYYMMDD_HHMMSS.csv
+
+Columnas:
+test_id
+condition
+run_index
+seq
+warmup
+pc_send_unix
+pc_recv_unix
+rtt_ms
+quest_recv_unity_time
+quest_send_unity_time
+camera_mode
+lidar_mode
+video_enabled
+lidar_enabled
+video_fps_target
+lidar_hz_target
+probe_rate_hz
+video_frames_sent
+lidar_msgs_sent
+stat_msgs_sent
+notes
+
+2. Resumen:
+wfiot_latency_pc_orchestrated_summary_YYYYMMDD_HHMMSS.csv
+
+Columnas:
+condition
+run_index
+samples_sent
+samples_received
+samples_lost
+loss_percent
+rtt_mean_ms
+rtt_median_ms
+rtt_min_ms
+rtt_max_ms
+rtt_p95_ms
+rtt_p99_ms
+jitter_std_ms
+video_fps_target
+lidar_hz_target
+probe_rate_hz
+
+Importante:
+- Excluir warmup=true del resumen.
+- Mantener el log original de eventos si ya existe.
+
+============================================================
+UNITY — QUEST ENDPOINT AUTOMÁTICO
+============================================================
+
+Crear nuevos scripts si no existen o modificar solo los nuevos bajo WFIoTLatency.
+
+Agregar un script nuevo recomendado:
+WFIoTQuestEndpointResponder.cs
+
+Responsabilidad:
+- Conectarse automáticamente a la PC.
+- Suscribirse al puerto 5001 a:
+  - pc_latency_probe
+  - test_control
+  - stat
+  - lidar_grid opcional si se quiere contar carga
+- Publicar respuestas por 5002 topic cmd:
+  - endpoint_ready
+  - latency_pong
+  - endpoint_status
+
+El script debe funcionar sin UI.
+
+Campos públicos en Inspector:
+string pcIp = "192.168.1.100";
+bool autoConnectOnStart = true;
+int sensorPort = 5001;
+int commandPort = 5002;
+bool respondToProbes = true;
+bool sendEndpointReady = true;
+
+Al iniciar:
+1. AsyncIO.ForceDotNet.Force().
+2. Crear thread endpointThread.
+3. En endpointThread:
+   - SUB connect tcp://<pcIp>:5001
+   - Subscribe("pc_latency_probe")
+   - Subscribe("test_control")
+   - opcional Subscribe("stat"), Subscribe("lidar_grid")
+   - PUB connect tcp://<pcIp>:5002
+4. Enviar endpoint_ready por topic cmd:
+{
+  "type": "endpoint_ready",
+  "device": "MetaQuest",
+  "unity_time": <Time.realtimeSinceStartup capturado de forma segura o 0 si está en thread>,
+  "notes": "Quest endpoint connected"
+}
+
+Como Time.realtimeSinceStartup no debe llamarse desde thread secundario, si se necesita unity_time preciso:
+- Capturarlo en main thread y compartirlo con lock; o
+- En endpoint_ready usar 0 y no depender de ese valor.
+
+Al recibir pc_latency_probe:
+- Responder inmediatamente por PUB :5002, topic cmd:
+{
+  "type": "latency_pong",
+  "seq": <seq recibido>,
+  "pc_send_unix": <pc_send_unix recibido>,
+  "quest_recv_unity_time": <opcional>,
+  "quest_send_unity_time": <opcional>,
+  "test_id": "<test_id recibido>",
+  "condition": "<condition recibido>"
+}
+
+Prioridad:
+- Respuesta inmediata desde el thread de red.
+- No depender del hilo principal para responder.
+- Si no se puede usar tiempo Unity en thread, mandar quest_recv_unity_time=0 y quest_send_unity_time=0.
+- El RTT oficial lo calcula Python con su propio reloj.
+
+Al recibir test_control:
+- Actualizar variables internas:
+  - currentTestId
+  - currentCondition
+  - cameraMode
+  - lidarMode
+  - videoEnabled
+  - lidarEnabled
+- Opcional: mostrarlo en UI si existe.
+- No iniciar nada desde Quest; solo responder y consumir streams.
+
+Video y sensores:
+Mantener o crear receivers nuevos que se conecten automáticamente:
+- WFIoTSimVideoReceiver:
+  - SUB 5555 video_rgb
+  - contar frames y bytes
+  - no decodificar por default
+- WFIoTSimSensorReceiver:
+  - SUB 5001 stat/lidar_grid
+  - contar mensajes y bytes
+  - no renderizar
+
+Estos receivers sirven para que Quest realmente reciba carga de video y LiDAR durante C2–C7.
+
+UI:
+La UI actual puede quedarse como monitor, pero ya no debe ser necesaria.
+Agregar en pantalla:
+- endpoint status,
+- current condition,
+- probes received,
+- pongs sent,
+- video FPS received,
+- lidar Hz received.
+
+Pero no se requiere que botones funcionen para correr la prueba.
+
+============================================================
+VERIFICACIÓN
+============================================================
+
+Prueba 1 — Python sin Quest:
+- Correr Python en modo interactive.
+- Debe imprimir IP, puertos y waiting for endpoint_ready.
+
+Prueba 2 — Unity Editor local:
+- pcIp = 127.0.0.1
+- Correr Python.
+- Play en Unity.
+- Python debe recibir endpoint_ready.
+- Run C1.
+- Python debe recibir latency_pong y mostrar RTT.
+
+Prueba 3 — Quest:
+- PC y Quest en misma red WiFi 5 GHz.
+- Configurar pcIp en Inspector antes de build o mediante campo simple si existe.
+- Build en Quest.
+- Correr Python:
+  python validation/tools/wfiot_nuc_latency_simulator.py --mode pc_orchestrated --interactive
+- Al abrir app en Quest, Python debe mostrar endpoint_ready.
+- Ejecutar C1 desde terminal.
+- Ejecutar C2 y C6.
+- Confirmar CSV en validation/logs/.
+
+Prueba 4 — Auto-run:
+- python validation/tools/wfiot_nuc_latency_simulator.py --mode pc_orchestrated --auto-run --duration 60 --probe-rate 10
+- Debe correr C1–C7 y exportar resumen.
+
+============================================================
+DOCUMENTACIÓN
+============================================================
+
+Actualizar docs/wfiot_latency_test_protocol.md:
+
+Agregar sección:
+"Modo recomendado: PC-orchestrated / Quest endpoint"
+
+Explicar:
+- La PC inicia las pruebas.
+- Quest solo responde probes.
+- El CSV oficial se guarda en la PC.
+- Esto evita depender de interacción manual en Quest.
+- El RTT se calcula con un único reloj, el de la PC.
+- La medición sigue siendo a nivel MR–edge/protocolo.
+
+Incluir comando recomendado:
+python validation/tools/wfiot_nuc_latency_simulator.py --mode pc_orchestrated --interactive
+
+Incluir comando auto-run:
+python validation/tools/wfiot_nuc_latency_simulator.py --mode pc_orchestrated --auto-run --duration 60 --probe-rate 10
+
+============================================================
+RESTRICCIONES
+============================================================
+
+- No modificar scripts existentes.
+- No modificar MainScene.
+- No depender de botones en Quest.
+- No guardar CSV oficial en Quest.
+- No calcular RTT con reloj de Quest.
+- No medir ni afirmar latencia física total del robot.
+- No usar varios sockets en un mismo puerto.
+- No compartir sockets entre threads.
+- Mantener el topic latency_pong por 5002 y pc_latency_probe por 5001.
+- Mantener video y LiDAR sintéticos para simular carga de percepción.

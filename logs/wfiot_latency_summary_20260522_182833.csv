@@ -1,0 +1,8 @@
+condition,samples_sent,samples_received,loss_percent,rtt_mean_ms,rtt_median_ms,rtt_min_ms,rtt_max_ms,rtt_p95_ms,rtt_p99_ms,jitter_std_ms
+C1_control_only,283,0,100.0,,,,,,,
+C2_video_normal,1050,0,100.0,,,,,,,
+C3_lidar_detail,1050,0,100.0,,,,,,,
+C4_lidar_medium,1050,0,100.0,,,,,,,
+C5_lidar_panorama,1050,0,100.0,,,,,,,
+C6_full_detail,1050,0,100.0,,,,,,,
+C7_full_panorama,1050,0,100.0,,,,,,,

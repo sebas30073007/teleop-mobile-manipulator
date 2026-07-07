@@ -1,0 +1,1 @@
+unix_ts,event,topic,seq,test_id,condition,payload_bytes,active_camera_mode,active_lidar_mode,video_enabled,lidar_enabled,notes

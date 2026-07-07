@@ -31,7 +31,30 @@
       "Bash(rm \"E:\\\\20_UNI\\\\Html proyects\\\\Claude_JustTheDocs_ProyectoTerminal\\\\teleop-mobile-manipulator\\\\docs\\\\02-manual\\\\06-validacion\\\\resultados.md\")",
       "Bash(rmdir \"E:\\\\20_UNI\\\\Html proyects\\\\Claude_JustTheDocs_ProyectoTerminal\\\\teleop-mobile-manipulator\\\\docs\\\\02-manual\\\\06-validacion\")",
       "Bash(cp \"E:\\\\20_UNI\\\\Html proyects\\\\Claude_JustTheDocs_ProyectoTerminal\\\\teleop-mobile-manipulator\\\\assets\\\\raw_assets\\\\Logic_controler_stepper_motors_V2\\\\production\\\\PCB_control_manipulador_V2.zip\" \"E:\\\\20_UNI\\\\Html proyects\\\\Claude_JustTheDocs_ProyectoTerminal\\\\teleop-mobile-manipulator\\\\assets\\\\downloads\\\\drivers_controller_gerbers.zip\")",
-      "Bash(cp \"E:\\\\20_UNI\\\\Html proyects\\\\Claude_JustTheDocs_ProyectoTerminal\\\\teleop-mobile-manipulator\\\\assets\\\\raw_assets\\\\Puente_H_ESP32\\\\Puente_H\\\\production\\\\Puente_H.zip\" \"E:\\\\20_UNI\\\\Html proyects\\\\Claude_JustTheDocs_ProyectoTerminal\\\\teleop-mobile-manipulator\\\\assets\\\\downloads\\\\puente_h_gerbers.zip\")"
+      "Bash(cp \"E:\\\\20_UNI\\\\Html proyects\\\\Claude_JustTheDocs_ProyectoTerminal\\\\teleop-mobile-manipulator\\\\assets\\\\raw_assets\\\\Puente_H_ESP32\\\\Puente_H\\\\production\\\\Puente_H.zip\" \"E:\\\\20_UNI\\\\Html proyects\\\\Claude_JustTheDocs_ProyectoTerminal\\\\teleop-mobile-manipulator\\\\assets\\\\downloads\\\\puente_h_gerbers.zip\")",
+      "Bash(Get-ChildItem -Recurse -Path \"E:\\\\20_UNI\\\\Html proyects\\\\Claude_JustTheDocs_ProyectoTerminal\\\\teleop-mobile-manipulator\")",
+      "Bash(Select-Object -First 50)",
+      "Bash(Get-ChildItem -Path \"E:\\\\20_UNI\\\\Html proyects\\\\Claude_JustTheDocs_ProyectoTerminal\\\\teleop-mobile-manipulator\" -Directory -ErrorAction SilentlyContinue)",
+      "Bash(Select-Object Name)",
+      "WebFetch(domain:wfiot2026.iot.ieee.org)",
+      "Bash(Get-ChildItem -Recurse \"E:\\\\20_UNI\\\\Html proyects\\\\Claude_JustTheDocs_ProyectoTerminal\\\\teleop-mobile-manipulator\\\\validation\")",
+      "Bash(Select-Object FullName)",
+      "Bash(Format-Table -AutoSize -Wrap)",
+      "WebSearch",
+      "WebFetch(domain:www.comsoc.org)",
+      "PowerShell(Set-Location \"E:\\\\20_UNI\\\\Html proyects\\\\Claude_JustTheDocs_ProyectoTerminal\\\\teleop-mobile-manipulator\\\\IEEE_IOT\"; $pdflatex = \"$env:LOCALAPPDATA\\\\Programs\\\\MiKTeX\\\\miktex\\\\bin\\\\x64\\\\pdflatex.exe\"; & $pdflatex -interaction=nonstopmode main_iot_v4.tex > $null; & $pdflatex -interaction=nonstopmode main_iot_v4.tex | Select-String \"Output written\")",
+      "PowerShell($pdftotext = \"$env:LOCALAPPDATA\\\\Programs\\\\MiKTeX\\\\miktex\\\\bin\\\\x64\\\\pdftotext.exe\"; & $pdftotext -f 7 -l 7 \"E:\\\\20_UNI\\\\Html proyects\\\\Claude_JustTheDocs_ProyectoTerminal\\\\teleop-mobile-manipulator\\\\IEEE_IOT\\\\main_iot_v4.pdf\" -)",
+      "Bash(python *)",
+      "WebFetch(domain:www.jamesdysonaward.org)",
+      "WebFetch(domain:www.ieee-aiot.org)",
+      "WebFetch(domain:cde.nus.edu.sg)",
+      "WebFetch(domain:www.prnewswire.com)",
+      "WebFetch(domain:iot.ieee.org)",
+      "WebFetch(domain:www.wgtn.ac.nz)",
+      "WebFetch(domain:web.archive.org)",
+      "WebFetch(domain:www.dyson.com.mx)",
+      "Bash(xargs wc -l)",
+      "Bash(awk -F: '{s+=$2} END{print s}')"
     ]
   }
 }
