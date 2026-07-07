@@ -1,0 +1,14 @@
+// Highlight the "English" top-level nav item so it stands out from the rest
+// of the sidebar, without affecting its nested children (Report/Documentation).
+// The href suffix "/en/" is unique to that single top-level link.
+a.nav-list-link[href$="/en/"] {
+  font-weight: 700;
+  color: #6d28d9;
+  background-color: rgba(109, 40, 217, 0.1);
+  border-radius: 6px;
+  transition: background-color 0.15s ease-in-out;
+}
+
+a.nav-list-link[href$="/en/"]:hover {
+  background-color: rgba(109, 40, 217, 0.18);
+}

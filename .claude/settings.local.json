@@ -54,7 +54,12 @@
       "WebFetch(domain:web.archive.org)",
       "WebFetch(domain:www.dyson.com.mx)",
       "Bash(xargs wc -l)",
-      "Bash(awk -F: '{s+=$2} END{print s}')"
+      "Bash(awk -F: '{s+=$2} END{print s}')",
+      "Bash(python3 -m pip install pillow -q)",
+      "Bash(curl *)",
+      "Skill(browse)",
+      "Read(//c/Ruby34-x64/lib/ruby/gems/3.4.0/gems/just-the-docs-0.12.0/**)",
+      "Read(//c/Ruby34-x64/lib/ruby/gems/3.4.0/gems/just-the-docs-0.12.0/_includes/css/**)"
     ]
   }
 }
