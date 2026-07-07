@@ -7,9 +7,9 @@ nav_order: 1
 
 Bienvenido al sitio de documentación del proyecto terminal de:
 
-Sebastián Méndez Villegas - Ingenieria en Mecatrónica y Sistemas Ciberfisicos
+**Sebastián Méndez Villegas** — Ingeniería en Mecatrónica y Sistemas Ciberfísicos
 
-Santiago Cuesta Machuca - Ingeniería en Mecatrónica y Producción
+Este proyecto terminal se desarrolló con el apoyo de Santiago Cuesta Machuca (Ingeniería en Mecatrónica y Producción), el acompañamiento técnico del Mtro. Joel Arango, especialista en tecnologías de Realidad Mixta, Extendida y Virtual (MR/XR/VR), y la asesoría principal del Dr. Huber Girón, director de este proyecto.
 
 ![Robot completo con manipulador montado]({{ "/assets/img/PROYECTO.png" | relative_url }})
 

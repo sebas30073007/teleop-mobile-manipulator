@@ -9,9 +9,9 @@ permalink: /en/
 
 Welcome to the English section of the documentation site for the terminal project of:
 
-Sebastián Méndez Villegas - Mechatronics and Cyber-Physical Systems Engineering
+**Sebastián Méndez Villegas** — Mechatronics and Cyber-Physical Systems Engineering
 
-Santiago Cuesta Machuca - Mechatronics and Production Engineering
+This terminal project was carried out with the support of Santiago Cuesta Machuca (Mechatronics and Production Engineering), the technical guidance of Prof. Joel Arango, a specialist in Mixed, Extended, and Virtual Reality (MR/XR/VR) technologies, and the primary academic advisory of Dr. Huber Girón, project director.
 
 ![Full robot with manipulator mounted]({{ "/assets/img/PROYECTO.png" | relative_url }})
 
